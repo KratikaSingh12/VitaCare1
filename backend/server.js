@@ -8,7 +8,7 @@ const app=express()
 const port=process.env.PORT||4000;
 connectDB()
 connectCloudinary()
-
+//wapas se krna pada 
 //middlewares
 app.use(express.json())
 app.use(cors())
