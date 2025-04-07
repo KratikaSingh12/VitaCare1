@@ -1,11 +1,17 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { assets } from '../assets/assets';
 import { NavLink, useNavigate } from 'react-router-dom';
+import { AppContext } from '../context/AppContext';
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const { token, setToken } = useContext(AppContext);
   const [showMenu, setShowMenu] = useState(false);
-  const [token, setToken] = useState(true);
+
+  const logout = () => {
+    setToken(false);
+    localStorage.removeItem('token');
+  };
 
   return (
     <div className="flex items-center justify-between text-sm py-4 mb-5 border-b border-gray-400">
@@ -13,40 +19,34 @@ const Navbar = () => {
       <img onClick={() => navigate('/')} className="w-10 cursor-pointer" src={assets.logo} alt="Logo" />
 
       {/* Desktop Navigation */}
-      <ul className='hidden md:flex items-center gap-5 font-medium'>
-  <NavLink to ='/'>
-    <li className='py-1'>HOME</li>
-    <hr className='border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden'/>
-  </NavLink>
-  <NavLink to ='/doctors'>
-    <li className='py-1'>ALL DOCTORS</li>
-  <hr className='border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden'/>
-  </NavLink>
-  <NavLink to='/about'>
-    <li className='py-1'>ABOUT</li>
-    <hr className='border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden'/>
-  </NavLink>
-  <NavLink to='/contact'>
-    <li className='py-1'>CONTACT</li>
-    <hr className='border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden'/>
-  </NavLink>
-  </ul>
-      {/* Right Section (Profile & Menu) */}
+      <ul className="hidden md:flex items-center gap-5 font-medium">
+        <li>
+          <NavLink to="/" className="py-1 hover:text-primary">HOME</NavLink>
+        </li>
+        <li>
+          <NavLink to="/doctors" className="py-1 hover:text-primary">ALL DOCTORS</NavLink>
+        </li>
+        <li>
+          <NavLink to="/about" className="py-1 hover:text-primary">ABOUT</NavLink>
+        </li>
+        <li>
+          <NavLink to="/contact" className="py-1 hover:text-primary">CONTACT</NavLink>
+        </li>
+      </ul>
+
+      {/* Right Section */}
       <div className="flex items-center gap-4">
         {token ? (
           <div className="relative group cursor-pointer">
-            {/* Profile Icon & Dropdown Trigger */}
             <div className="flex items-center gap-2">
               <img className="w-6 rounded-full" src={assets.profile_pic} alt="Profile" />
               <img className="w-2.5" src={assets.dropdown_icon} alt="Dropdown" />
             </div>
-
-            {/* Dropdown Menu */}
             <div className="absolute top-full right-0 mt-2 bg-white shadow-lg rounded-md w-48 text-gray-700 hidden group-hover:block z-50">
               <ul className="flex flex-col gap-2 p-3">
                 <li onClick={() => navigate('/my-profile')} className="cursor-pointer hover:text-black">My Profile</li>
                 <li onClick={() => navigate('/my-appointments')} className="cursor-pointer hover:text-black">My Appointments</li>
-                <li onClick={() => setToken(false)} className="cursor-pointer hover:text-black">Logout</li>
+                <li onClick={logout} className="cursor-pointer hover:text-black">Logout</li>
               </ul>
             </div>
           </div>
@@ -67,10 +67,21 @@ const Navbar = () => {
               <img className="w-7 cursor-pointer" onClick={() => setShowMenu(false)} src={assets.cross_icon} alt="Close" />
             </div>
             <ul className="flex flex-col items-center gap-3 mt-5 px-5 text-lg font-medium">
-              {["/", "/doctors", "/about", "/contact"].map((path, index) => (
-                <NavLink key={index} onClick={() => setShowMenu(false)} to={path}>
-                  <p className="px-4 py-2 rounded inline-block">{path === "/" ? "Home" : path.replace("/", "").toUpperCase()}</p>
-                </NavLink>
+              {[
+                { path: '/', label: 'Home' },
+                { path: '/doctors', label: 'All Doctors' },
+                { path: '/about', label: 'About' },
+                { path: '/contact', label: 'Contact' },
+              ].map(({ path, label }, index) => (
+                <li key={index}>
+                  <NavLink
+                    to={path}
+                    onClick={() => setShowMenu(false)}
+                    className="px-4 py-2 rounded inline-block hover:text-primary"
+                  >
+                    {label}
+                  </NavLink>
+                </li>
               ))}
             </ul>
           </div>
