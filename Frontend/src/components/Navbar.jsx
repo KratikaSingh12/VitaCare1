@@ -5,7 +5,7 @@ import { AppContext } from '../context/AppContext';
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const { token, setToken } = useContext(AppContext);
+  const { token, setToken , userData } = useContext(AppContext);
   const [showMenu, setShowMenu] = useState(false);
 
   const logout = () => {
@@ -36,10 +36,10 @@ const Navbar = () => {
 
       {/* Right Section */}
       <div className="flex items-center gap-4">
-        {token ? (
+        {token  && userData ?  (
           <div className="relative group cursor-pointer">
             <div className="flex items-center gap-2">
-              <img className="w-6 rounded-full" src={assets.profile_pic} alt="Profile" />
+              <img className="w-6 rounded-full" src={userData.image} alt="Profile" />
               <img className="w-2.5" src={assets.dropdown_icon} alt="Dropdown" />
             </div>
             <div className="absolute top-full right-0 mt-2 bg-white shadow-lg rounded-md w-48 text-gray-700 hidden group-hover:block z-50">
