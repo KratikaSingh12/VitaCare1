@@ -24,7 +24,7 @@ export default function PrescriptionScanner() {
     formData.append("image", selectedImage);
 
     try {
-      const response = await axios.post(backendUrl + '/analyze-prescription',formData)
+      const response = await axios.post(backendUrl + '/api/analyze-prescription',formData)
       const data = await response.json();
       console.log("Analysis Result:", data);
       setAnalysisResult(data);

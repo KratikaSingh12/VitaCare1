@@ -6,7 +6,7 @@ import connectCloudinary  from './config/cloudinary.js'
 import adminRouter from './routes/adminRoute.js'
 import doctorRouter from './routes/doctorRoute.js'
 import userRouter from './routes/userRoute.js'
-
+import assisstantRouter from './routes/assisstantRoute.js'
 
 const app=express()
 const port=process.env.PORT||4000;
@@ -19,6 +19,7 @@ app.use(cors())
 
 
 //api endpoints
+app.use('/api',assisstantRouter)
 app.use('/api/admin',adminRouter)
 app.use('/api/doctor',doctorRouter)
 app.use('/api/user',userRouter)
