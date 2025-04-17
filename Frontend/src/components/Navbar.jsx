@@ -32,6 +32,9 @@ const Navbar = () => {
         <li>
           <NavLink to="/contact" className="py-1 hover:text-primary">CONTACT</NavLink>
         </li>
+        <li>
+          <NavLink to="/pharmacist-assisstant" className="py-1 hover:text-primary">ASSISSTANT</NavLink>
+        </li>
       </ul>
 
       {/* Right Section */}
