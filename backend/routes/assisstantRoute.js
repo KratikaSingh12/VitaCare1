@@ -1,22 +1,22 @@
 import express from "express";
 import multer from "multer";
 import axios from "axios";
+import dotenv from 'dotenv';
 import FormData from "form-data";
 import fs from "fs";
-
+dotenv.config();
 const router = express.Router();
 const upload = multer({ dest: "uploads/" });
-
 router.post("/analyze-prescription", upload.single("image"), async (req, res) => {
   try {
     const file = req.file;
-
+    console.log("photo coming")
     if (!file) return res.status(400).json({ error: "No image provided" });
 
     const formData = new FormData();
     formData.append("image", fs.createReadStream(file.path), file.originalname);
-
-    const response = await axios.post("http://localhost:8000/upload", formData, {
+    console.log(formData)
+    const response = await axios.post(`${process.env.PYTHON_BACKEND_URL}/upload`, formData, {
       headers: formData.getHeaders(),
     });
     console.log(response.data)

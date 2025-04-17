@@ -2,6 +2,7 @@ import React, { useEffect, useState,useContext } from "react";
 import { Card, CardContent } from "../components/Card.jsx";
 import { Input } from "../components/input.jsx";
 import { Button } from "../components/button.jsx";
+import axios from "axios";
 import { Camera, Search, History } from "lucide-react";
 import { AppContext } from "../context/AppContext.jsx";
 export default function PrescriptionScanner() {
@@ -25,9 +26,10 @@ export default function PrescriptionScanner() {
 
     try {
       const response = await axios.post(backendUrl + '/api/analyze-prescription',formData)
-      const data = await response.json();
-      console.log("Analysis Result:", data);
-      setAnalysisResult(data);
+      console.log(response.data)
+      //const data = await response.json();
+      //console.log("Analysis Result:", data);
+      setAnalysisResult(response.data);
     } catch (error) {
       console.error("Error analyzing prescription:", error);
     }
