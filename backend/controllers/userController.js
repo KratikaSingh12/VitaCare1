@@ -237,6 +237,7 @@ const PaymentPhonepe = async (req, res) => {
       merchantUserId: appointment.userId || "guest_user",
       amount,
       callbackUrl: process.env.CALLBACK_URL,
+      redirectUrl: `${process.env.FRONTEND_URL}/my-appointments`,
       paymentInstrument: { type: "PAY_PAGE" },
     };
     console.log(process.env.CALLBACK_URL);
@@ -289,6 +290,7 @@ const PaymentPhonepe = async (req, res) => {
       .json({ success: false, message: "Payment creation failed" });
   }
 };
+//server to server callback
 const paymentcalllback = async (req, res) => {
   try {
     console.log("listening here after payment");
@@ -314,9 +316,9 @@ const paymentcalllback = async (req, res) => {
       await appointment.save();
 
       if (responsecode === "SUCCESS") {
-        console.log(`${process.env.FRONTEND_URL}/my-appointments`)
+        console.log(`${process.env.REDIRECT_URL}/my-appointments`)
         return res.redirect(
-         `${process.env.FRONTEND_URL}/my-appointments`
+         `${process.env.REDIRECT_URL}/my-appointments`
         );
       } else {
         return res.redirect(

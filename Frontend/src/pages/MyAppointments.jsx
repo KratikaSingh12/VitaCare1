@@ -62,7 +62,7 @@ const MyAppointments = () => {
       toast.error(error.message);
     }
   };
-  const appointmentRazorpay = async (appointmentId) => {
+  const appointmentPhonepe = async (appointmentId) => {
     try {
       console.log("here");
       console.log(token);
@@ -79,7 +79,6 @@ const MyAppointments = () => {
         const redirectUrl = data.redirectUrl;
         console.log("Redirecting to:", redirectUrl);
 
-    
         window.location.href = redirectUrl;
       }
     } catch (err) {
@@ -126,9 +125,15 @@ const MyAppointments = () => {
             </div>
             <div></div>
             <div className="flex flex-col gap-2 justify-end">
-              {!item.cancelled && (
+              {!item.cancelled && item.isCompleted && (
+                <div className="text-green-600 font-semibold py-2 border border-green-500 rounded text-center">
+                  Payment Done
+                </div>
+              )}
+
+              {!item.cancelled && !item.isCompleted && (
                 <button
-                  onClick={() => appointmentRazorpay(item._id)}
+                  onClick={() => appointmentPhonepe(item._id)}
                   className="text-sm text-stone-500 text-center sm:min-w-48 py-2 border  hover:bg-primary hover:text-white transition-all duration-300"
                 >
                   Pay Online{" "}
