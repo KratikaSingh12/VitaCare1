@@ -12,7 +12,7 @@ import Contact from './pages/Contact';
 import Login from './pages/Login';
 import MyProfile from './pages/MyProfile';
 import MyAppointments from './pages/MyAppointments';
-
+import Assisstant from './pages/Assisstant'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 const App = () => {
@@ -31,6 +31,7 @@ const App = () => {
         <Route path='/about'element={<About/>} />
         <Route path='/contact'element={<Contact />} />
         <Route path='/login'element={<Login />} />
+        <Route path='/pharmacist-assisstant' element={<Assisstant/>}/>
         <Route path='/my-profile'element={<MyProfile/>}/>
         <Route path='/my-appointments'element={<MyAppointments/>}/>
         

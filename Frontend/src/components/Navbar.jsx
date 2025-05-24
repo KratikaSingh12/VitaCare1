@@ -7,7 +7,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const { token, setToken , userData } = useContext(AppContext);
   const [showMenu, setShowMenu] = useState(false);
-
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   const logout = () => {
     setToken(false);
     //localStorage.removeItem('token');
@@ -32,24 +32,33 @@ const Navbar = () => {
         <li>
           <NavLink to="/contact" className="py-1 hover:text-primary">CONTACT</NavLink>
         </li>
+        <li>
+          <NavLink to="/pharmacist-assisstant" className="py-1 hover:text-primary">ASSISSTANT</NavLink>
+        </li>
       </ul>
 
       {/* Right Section */}
-      <div className="flex items-center gap-4">
+      <div className=" flex items-center gap-4">
         {token  && userData ?  (
-          <div className="relative group cursor-pointer">
-            <div className="flex items-center gap-2">
-              <img className="w-6 rounded-full" src={userData.image} alt="Profile" />
-              <img className="w-2.5" src={assets.dropdown_icon} alt="Dropdown" />
-            </div>
-            <div className="absolute top-full right-0 mt-2 bg-white shadow-lg rounded-md w-48 text-gray-700 hidden group-hover:block z-50">
+          <div className="relative cursor-pointer">
+          <div
+            onClick={() => setDropdownOpen(prev => !prev)}
+            className="flex items-center gap-2"
+          >
+            <img className="w-6 rounded-full" src={userData.image} alt="Profile" />
+            <img className="w-2.5" src={assets.dropdown_icon} alt="Dropdown" />
+          </div>
+        
+          {dropdownOpen && (
+            <div className="absolute top-full right-0 mt-2 bg-white shadow-lg rounded-md w-48 text-gray-700 z-50">
               <ul className="flex flex-col gap-2 p-3">
-                <li onClick={() => navigate('/my-profile')} className="cursor-pointer hover:text-black">My Profile</li>
-                <li onClick={() => navigate('/my-appointments')} className="cursor-pointer hover:text-black">My Appointments</li>
-                <li onClick={logout} className="cursor-pointer hover:text-black">Logout</li>
+                <li onClick={() => { setDropdownOpen(false); navigate('/my-profile'); }} className="cursor-pointer hover:text-black">My Profile</li>
+                <li onClick={() => { setDropdownOpen(false); navigate('/my-appointments'); }} className="cursor-pointer hover:text-black">My Appointments</li>
+                <li onClick={() => { setDropdownOpen(false); logout(); }} className="cursor-pointer hover:text-black">Logout</li>
               </ul>
             </div>
-          </div>
+          )}
+        </div>
         ) : (
           <button onClick={() => navigate('/login')} className="bg-[#4499dd] text-white px-8 py-3 rounded-full font-light hidden md:block">
             Create Account
