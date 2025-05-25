@@ -6,11 +6,14 @@ import crypto from "crypto";
 import axios from "axios";
 import { v2 as cloudinary } from "cloudinary";
 import doctorModel from "../models/doctorModel.js";
-import appointmentModel from "../models/AppointmentModel.js";
+import appointmentModel from "../models/appointmentModel.js"
+import dotenv from "dotenv"
+dotenv.config();
 //import appointmentModel from "../models/appointmentModel.js";
 // API to register user
 const registerUser = async (req, res) => {
   try {
+    
     const { name, email, password } = req.body;
 
     if (!name || !password || !email) {
