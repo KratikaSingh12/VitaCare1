@@ -1,0 +1,3 @@
+[submodule "Python-backend"]
+	path = Python-backend
+	url = https://github.com/ShouryaMishra2006/PharmaMate.git
