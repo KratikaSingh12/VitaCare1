@@ -7,7 +7,16 @@ export const AdminContext = createContext();
 const AdminContextProvider = (props) => {
     const [aToken ,setAToken]=useState(localStorage.getItem('atoken')?localStorage.getItem('atoken'):'')
     const [doctors,setDoctors] = useState([])
+<<<<<<< Updated upstream
     const [appointments,setAppointments]=useState([])
+=======
+
+    const[dashData,setDashData]=useState(false)
+
+    
+
+
+>>>>>>> Stashed changes
     const backendUrl=import.meta.env.VITE_BACKEND_URL
 
     const getAllDoctors = async()=>{
@@ -28,6 +37,26 @@ const AdminContextProvider = (props) => {
                toast.error(error.message)
           }
     }
+
+
+    const getDashData=async ()=>{
+      try{
+
+        const {data}=await axios.get(backendUrl + '/api/admin/dashboard',{headers:{aToken}})
+
+        if (data.success){
+          setDashData(data.dashData)
+          console.log(data.dashData)
+        }else{
+          toast.error(data.message)
+        }
+
+      }catch(error){
+        toast.error(error.message)
+      }
+    }
+
+
 
     const changeAvailability = async (docId) => {
         // Optimistic update: toggle UI instantly
@@ -86,9 +115,13 @@ const AdminContextProvider = (props) => {
         aToken,setAToken,
         backendUrl,doctors,
         getAllDoctors,changeAvailability,
+<<<<<<< Updated upstream
         appointments,setAppointments,
         getAllAppointments,
         cancelAppointment
+=======
+        dashData,getDashData
+>>>>>>> Stashed changes
     };
 
     return (

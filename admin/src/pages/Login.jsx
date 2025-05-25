@@ -9,6 +9,7 @@ const Login = () => {
     const [email,setEmail]=useState('')
     const [password,setPassword]=useState('')
     const {setAToken,backendUrl}=useContext(AdminContext)
+    const {setDToken}=useContext{DoctorContext}
     
     const onSubmitHandler=async(event)=>{
       event.preventDefault()
@@ -21,6 +22,18 @@ const Login = () => {
             //console.log(data.token)
             localStorage.setItem('aToken',data.token)
             setAToken(data.token)
+           }
+
+           else{
+             //console.log(data.message)
+             toast.error(data.message);
+           }
+        }else{
+          const{data}=await axios.post(backendUrl+'/api/doctor/login',{email,password})
+          if(data.success){
+            //console.log(data.token)
+            localStorage.setItem('dToken',data.token)
+            setDToken(data.token)
            }
 
            else{
