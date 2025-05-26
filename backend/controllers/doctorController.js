@@ -103,7 +103,7 @@ const doctorList = async (req, res) => {
 }
 
 // API to change doctor availablity for Admin and Doctor Panel
-const changeAvailability = async (req, res) => {
+const changeAvailablity = async (req, res) => {
     try {
 
         const { docId } = req.body
@@ -195,7 +195,7 @@ export {
     appointmentsDoctor,
     appointmentCancel,
     doctorList,
-    changeAvailability,
+    changeAvailablity,
     appointmentComplete,
     doctorDashboard,
     doctorProfile,
