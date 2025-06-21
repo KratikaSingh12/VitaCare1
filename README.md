@@ -4,7 +4,7 @@ HealHub is a complete healthcare management platform that allows users to easily
 
 # Live Preview
 
-  [heal-hub-user.vercel.app](heal-hub-user.vercel.app)
+  (heal-hub-user.vercel.app)
 
 # 🚀 Features
 
