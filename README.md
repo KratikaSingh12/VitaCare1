@@ -2,9 +2,9 @@
 
 HealHub is a complete healthcare management platform that allows users to easily find doctors, book appointments, make secure online payments, and receive AI-driven medical guidance. It features a fully functional admin panel, seamless JWT authentication, and an integrated AI assistant named PharmaMate.
 
-# Live Preview
+## 🚀 Live Demo
 
-  (heal-hub-user.vercel.app)
+[Heal-Hub](heal-hub-user.vercel.app)
 
 # 🚀 Features
 
