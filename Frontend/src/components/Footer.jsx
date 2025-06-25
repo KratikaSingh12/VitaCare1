@@ -1,40 +1,53 @@
 import React from "react";
 import { assets } from "../assets/assets";
-const Footer = () =>{
-     return(
-        <div className="md:mx-10">
-            <div className="flex flex-col sm:grid grid-cols-[3fr_1fr_1fr] gap-14 my-10 mt-40 text-sm">  
-                 {/* -----left-----*/}
-                     <div>
-                        <img className="w-10 h-50 border-black mb-7" src={assets.logo} alt=""/>
+import { NavLink } from "react-router-dom";
 
-                        <p className="w-full md:w-1/2 text-gray-600 leading-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium itaque saepe consequatur, cum dicta explicabo consectetur doloremque voluptate ea doloribus rem quasi, incidunt autem harum velit excepturi enim tempora animi.</p>
-                     </div>
-                  {/* -----center----*/}
-                     <div>
-                        <p className="text-xl font-medium mb-5">COMPANY</p>
-                        <ul className="flex flex-col gap-2 text-gray-600">
-                            <li>Home</li>
-                            <li>About us</li>
-                            <li>Contact us</li>
-                            <li>Orivacy policy</li>
-                        </ul>
-                     </div>
-                  {/* ------right----*/}
-                     <div>
-                            <p className="text-xl font-medium mb-5">GET IN TOUCH</p>
-                            <ul className="flex flex-col gap-2 text-gray-600">
-                            <li>+91-79890XXXXX</li>
-                            <li>emergency@gmail.com</li>
-                            </ul>
-                     </div>
-            </div>
-                {/* -----copyright text ----*/}
-                <div>
-                    <hr/>
-                    <p className="py-5 text-sm text-center">Copyright 2025@Heal-Hub - All Right Reserved </p>
-                </div>
+const Footer = () => {
+  return (
+    <footer className="bg-gray-50 px-6 sm:px-20 py-10 mt-24 border-t border-gray-300">
+      <div className="grid gap-10 md:grid-cols-[2fr_1fr_1fr] text-sm text-gray-700">
+        {/* Left - Logo and Description */}
+        <div>
+          <img className="w-12 mb-5" src={assets.logo} alt="HealHub Logo" />
+          <p className="max-w-md leading-6">
+            <strong>HealHub</strong> is your trusted online healthcare companion. 
+            Book doctor appointments, consult with specialists, and manage your medical journey 
+            all in one place. We're committed to making healthcare simple, secure, and accessible.
+          </p>
         </div>
-     )
-}
-export default Footer
+
+        {/* Middle - Navigation Links */}
+        <div>
+          <h4 className="text-lg font-semibold mb-4">Company</h4>
+          <ul className="space-y-2">
+            <li><NavLink to="/" className="hover:underline hover:text-[#4499dd]">Home</NavLink></li>
+            <li><NavLink to="/about" className="hover:underline hover:text-[#4499dd]">About Us</NavLink></li>
+            <li><NavLink to="/contact" className="hover:underline hover:text-[#4499dd]">Contact Us</NavLink></li>
+            <li><NavLink to="/privacy-policy" className="hover:underline hover:text-[#4499dd]">Privacy Policy</NavLink></li>
+          </ul>
+        </div>
+
+        {/* Right - Contact Info */}
+        <div>
+          <h4 className="text-lg font-semibold mb-4">Get in Touch</h4>
+          <ul className="space-y-2">
+            <li>
+              <a href="tel:+919084426799" className="hover:underline hover:text-[#4499dd]">+91-9084426799</a>
+            </li>
+            <li>
+              <a href="mailto:healhub247@gmail.com" className="hover:underline hover:text-[#4499dd]">healhub247@gmail.com</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      {/* Copyright */}
+      <div className="mt-10 text-center text-gray-500 text-xs">
+        <hr className="mb-4" />
+        <p>© 2025 HealHub. All rights reserved.</p>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;

@@ -5,20 +5,18 @@ dotenv.config();
 
 const connectDB = async () => {
   try {
-    await mongoose.connect(`${process.env.MONGODB_URI}/Heal-Hub`, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    await mongoose.connect(process.env.MONGODB_URI); // full URI from .env
 
-    console.log("Database Connected");
+    console.log("✅ Database Connected");
+
     mongoose.connection.on("error", (err) => {
-      console.error("MongoDB Connection Error:", err);
+      console.error("❌ MongoDB Connection Error:", err);
     });
 
   } catch (error) {
-    console.log(process.env.MONGODB_URI)
-    console.error("Database Connection Failed:", error);
-    process.exit(1); 
+    console.log("🔍 URI:", process.env.MONGODB_URI);
+    console.error("❌ Database Connection Failed:", error);
+    process.exit(1);
   }
 };
 
