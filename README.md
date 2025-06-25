@@ -1,193 +1,139 @@
-# 🩺 HealHub – Smart Healthcare Appointment System with AI Assistant
+# 🩺 HealHub – AI-powered Healthcare Appointment System
 
-HealHub is a complete healthcare management platform that allows users to easily find doctors, book appointments, make secure online payments, and receive AI-driven medical guidance. It features a fully functional admin panel, seamless JWT authentication, and an integrated AI assistant named PharmaMate.
-
-## 🚀 Live Demo
-
-[Heal-Hub](https://heal-hub-user.vercel.app/)
-
-# 🚀 Features
-
-# 👤 User Panel
-
-🔐 Secure JWT-based login and authentication.
-
-✏️ Update personal profile and manage user information.
-
-🧑‍⚕️ Browse doctors by specialization and availability.
-
-📅 Book appointments by selecting from real-time available slots.
-
-❌ Cancel appointments if plans change.
-
-💳 Make online payments via:
-
-PhonePe
-
-UPI ID
-
-Debit Card
-
-Net Banking
-
-📋 View "My Appointments" history with upcoming and past bookings.
-
-# 🛠️ Admin Panel
-
-➕ Add doctors with consultation prices.
-
-📄 View and manage full doctor list.
-
-📆 Change doctor availability for appointments.
-
-📊 Dashboard overview:
-
-Total doctors
-
-Total patients
-
-Total appointments
-
-Latest bookings
-
-👁️ View all patient appointments.
-
-# 🤖 AI Assistant – PharmaMate
-
-HealHub integrates an intelligent medical assistant named PharmaMate:
-
-Built using advanced ML and NLP models.
-
-Uses OCR (Optical Character Recognition) to read clinical documents.
-
-Powered by SpaCy and ClinicalBERT for deep medical understanding.
-
-Connects with external medical APIs to offer:
-
-Condition predictions
-
-Recommended treatments
-
-Suggested specialists and drugs
-
-This assistant enhances decision-making for users by offering data-driven health insights.
-
-# 🌍 Real-World Impact & Usefulness
-
-# 🧑‍⚕️ For Patients:
-
-Rural Reach & Accessibility
-
-Many rural or semi-urban areas lack proper hospital booking systems. HealHub allows anyone with a phone to find doctors and book appointments—no physical visits or long queues required.
-
-Affordable and Time-saving Healthcare
-
-Patients can:
-
-Skip travel just to book appointments.
-
-Cancel and reschedule easily.
-
-Get UPI-based payments done in seconds—no need for credit cards or complex banking.
-
-Empowered with AI
-
-PharmaMate helps patients:
-
-Understand symptoms through OCR + NLP.
-
-Discover possible conditions and treatment options.
-
-Know which specialist to consult before visiting.
-
-Elderly and Disabled Accessibility
-
-Simplified UI and mobile responsiveness make it easy for elderly or differently-abled individuals to use.
-
-# 🏥 For Doctors and Clinics:
-
-Reduced No-shows
-
-With pre-paid booking via PhonePe and other gateways, doctors experience fewer missed appointments.
-
-Streamlined Scheduling
-
-Doctors can view, edit, and manage their availability. Admins can set consulting prices and easily manage doctor lists.
-
-Data Insights via Dashboard
-
-Admins and doctors can:
-
-See appointment trends
-
-Track daily bookings
-
-Identify peak consulting hours
-
-Better Patient Preparation
-
-Patients arriving after AI-based pre-checks are more informed, saving consultation time.
-
-## ⚙️ Tech Stack
-
-| Layer              | Technology                                   |
-|--------------------|-----------------------------------------------|
-| **Frontend**       | React.js, Tailwind CSS                        |
-| **Backend**        | Node.js, Express.js                           |
-| **Database**       | MongoDB                                       |
-| **Authentication** | JWT                                           |
-| **AI Assistant**   | Python (OCR, SpaCy, ClinicalBERT)             |
-| **Payments**       | PhonePe API / UPI Integration                 |
-| **Media Management** | Cloudinary – image upload, optimization,  |
-
-## 🚀 Future Scope & Enhancements
-
-HealHub is designed with scalability and long-term adoption in mind. The current system serves as a strong MVP, and the following features and improvements are planned to extend it into a fully production-grade, nationwide health platform:
-
-### 🔧 Feature Enhancements
-- **🩺 Video & Voice Consultations:**  
-  Enable virtual consultations through integrated video calling APIs (e.g., Jitsi, WebRTC).
-  
-- **📧 Notifications & Reminders:**  
-  Email, SMS, and WhatsApp notifications for appointment confirmations, reminders, and updates.
-
-- **📁 Electronic Health Records (EHR):**  
-  Secure document upload and AI-based analysis of prescriptions, lab reports, and past records.
-
-- **📱 Mobile App Launch:**  
-  Android & iOS apps with offline-first design and push notification support.
-
-- **👨‍👩‍👧 Family Management:**  
-  Add dependent profiles (children, elderly, etc.) under a single user account.
-
-- **🌐 Multilingual Support:**  
-  Local language support to make the system accessible across different regions of India.
-
-- **🗓️ Batch Booking System:**  
-  Group or recurring appointment booking for regular checkups or vaccination camps.
+**HealHub** is a smart, full-stack healthcare platform designed to simplify doctor appointment booking, AI-assisted medical guidance, secure online payments, and prescription analysis — all in one place. It offers dedicated panels for Users, Doctors, and Admins, with secure JWT-based authentication and a built-in AI assistant: **PharmaMate**.
 
 ---
 
-### 📈 Scalability Vision
-- **⛓️ Microservices Architecture:**  
-  Transition from monolithic backend to modular microservices for appointment, payment, and AI services—allowing independent scaling.
+## 🌐 Live Preview
 
-- **🧰 Load Balancing & Caching:**  
-  Use tools like NGINX, Redis, and CDN for caching and better request distribution.
+- 👤 **User Portal**: [https://heal-hub-user.vercel.app](https://heal-hub-user.vercel.app)
 
-- **🌍 Regional Deployment:**  
-  Deploy regional clusters to minimize latency and serve users across India in real-time.
-
-- **🔄 Horizontal Scaling:**  
-  Deploy multiple instances behind a load balancer for high availability during peak booking hours.
-
-- **📊 Analytics Dashboard:**  
-  Track metrics like daily active users, peak hours, doctor availability heatmaps, and feedback scores to make data-driven improvements.
-
-- **🤝 Integration with National Health Stack (NDHM):**  
-  Comply with Indian health tech standards for storing and exchanging medical data securely.
 
 ---
 
-These improvements aim to transform HealHub from a smart appointment system into a **full-fledged healthcare infrastructure** for clinics, hospitals, and rural health camps.
+## 🚀 Key Features
 
+### 👨‍⚕️ User Panel
+- Search doctors by specialization
+- View doctor details and book appointments
+- Upload prescriptions for AI-based analysis (PharmaMate)
+- Online payment integration with PhonePe (UAT)
+- Secure signup/login using JWT
+- View and manage appointment history
+
+### 🩺 Doctor Panel
+- Login securely using email & password
+- View upcoming appointments
+- Track patient count and earnings
+- Manage profile and availability
+
+### 🛠️ Admin Dashboard
+- Admin login with protected access
+- Add/edit/delete doctors
+- Monitor all appointments and earnings
+- View system-wide analytics
+
+### 🧠 PharmaMate – AI Assistant
+- Python Flask backend for medical NLP
+- Understands prescription data
+- Uses BERT/transformers/NLTK for predictions
+
+---
+
+## 🧩 Tech Stack
+
+| Layer        | Technologies Used                             |
+|--------------|-----------------------------------------------|
+| **Frontend** | React.js, Tailwind CSS, React Router, Axios   |
+| **Backend**  | Node.js, Express.js, MongoDB, Mongoose        |
+| **AI Server**| Python, Flask, Transformers, NLTK             |
+| **Cloud**    | Cloudinary (file uploads), MongoDB Atlas      |
+| **Payment**  | PhonePe UAT APIs (payment gateway)            |
+| **Auth**     | JWT, LocalStorage, Context API                |
+
+---
+
+## 🔐 Authentication & Authorization
+- User and Admin login
+- Admin can access and control dashboard routes
+- Protected routes for sensitive pages
+
+---
+
+## 📁 Environment Variables Setup
+
+To run this project, you need to set up environment variables in all three folders: `/backend`, `/frontend`, and `/admin`.
+
+### 🗂️ 1. Backend `.env` (inside `/backend` folder)
+```
+MONGODB_URI='your-mongodb-uri'
+CLOUDINARY_NAME='your-cloudinary-cloud-name'
+CLOUDINARY_API_KEY='your-cloudinary-api-key'
+CLOUDINARY_SECRET_KEY='your-cloudinary-secret-key'
+ADMIN_EMAIL='your-admin-email'
+ADMIN_PASSWORD='your-admin-password'
+JWT_SECRET='your-jwt-secret'
+PYTHON_BACKEND_URL='http://localhost:8000'
+PHONEPE_MERCHANT_ID='your-merchant-id'
+PHONEPE_SALT_KEY='your-salt-key'
+PHONEPE_SALT_INDEX='your-salt-index'
+PHONEPE_API_ENDPOINT='https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/pay'
+CALLBACK_URL='https://your-ngrok-or-cloudflare-url/api/user/payment-callback'
+FRONTEND_URL='http://localhost:5173'
+REDIRECT_URL='https://your-public-url'
+VITE_BACKEND_URL='http://localhost:4000'
+```
+
+### 🌐 2. Frontend `.env` (inside `/frontend` folder)
+```
+VITE_BACKEND_URL=http://localhost:4000
+
+```
+
+### 🛠️ 3. Admin `.env` (inside `/admin` folder)
+```
+VITE_BACKEND_URL=http://localhost:4000
+```
+
+---
+
+
+## ⚙️ Installation Instructions
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/your-username/forever-ecommerce.git
+cd forever-ecommerce
+```
+
+### 2. Set up Environment Files
+Create `.env` files inside each of the following folders: `backend`, `frontend`, and `admin`, as shown above.
+
+### 3. Install Dependencies and Run Project
+
+#### 🔧 Backend
+```bash
+cd backend
+npm install
+npm run dev
+```
+#### 💻 Frontend (User Interface)
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+#### 🛡️ Admin Panel
+```bash
+cd admin
+npm install
+npm run dev
+```
+
+### ✅ Project is now running locally!
+- User Panel: http://localhost:5173
+- Admin Panel: http://localhost:5174
+- Backend: http://localhost:4000
+
+---
