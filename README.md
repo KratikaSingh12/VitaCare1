@@ -102,8 +102,8 @@ VITE_BACKEND_URL=http://localhost:4000
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/your-username/forever-ecommerce.git
-cd forever-ecommerce
+git clone https://github.com/Shrashti-yadav/Heal-Hub.git
+cd Heal-Hub
 ```
 
 ### 2. Set up Environment Files
