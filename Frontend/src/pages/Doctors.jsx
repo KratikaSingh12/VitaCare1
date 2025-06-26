@@ -25,8 +25,8 @@ const Doctors = () => {
   };
 
   useEffect(() => {
-    console.log("✅ Doctors from context:", doctors);
-    console.log("🔍 Current speciality param:", speciality);
+    // console.log("✅ Doctors from context:", doctors);
+    // console.log("🔍 Current speciality param:", speciality);
     applyFilter();
   }, [doctors, speciality]);
 

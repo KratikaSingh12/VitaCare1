@@ -85,7 +85,7 @@ const loginUser = async (req, res) => {
 // Api to get usr profile data
 const getProfile = async (req, res) => {
   try {
-    console.log("profile here");
+    // console.log("profile here");
     const { userId } = req.body;
     const userData = await userModel.findById(userId).select("-password");
     res.json({ success: true, userData });
@@ -125,7 +125,7 @@ const updateProfile = async (req, res) => {
 const bookAppointment = async (req, res) => {
   try {
     const { userId, docId, slotDate, slotTime } = req.body;
-    console.log("Booking appointment for:", userId, docId, slotDate, slotTime);
+    // console.log("Booking appointment for:", userId, docId, slotDate, slotTime);
     const docData = await doctorModel.findById(docId).select("-password");
 
     if (!docData.available) {

@@ -9,6 +9,8 @@ const AppContextProvider = (props) => {
     const currencySymbol = '₹';
     const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
+
+
     const [doctors, setDoctors] = useState([]);
     const [token, setToken] = useState(localStorage.getItem('token') || '');
     const [userData, setUserData] = useState(false);
@@ -30,7 +32,11 @@ const AppContextProvider = (props) => {
 
     const loadUserProfileData = async () => {
         try {
-            const { data } = await axios.get(backendUrl + '/api/user/get-profile', { headers: { token } });
+            const { data } = await axios.get(backendUrl + '/api/user/get-profile', { headers: {
+  Authorization: `Bearer ${token}`
+} });
+// console.log("🔐 Sending token:", token);
+
             if (data.success) {
                 setUserData(data.userData);
             } else {

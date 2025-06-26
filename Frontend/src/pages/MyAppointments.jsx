@@ -2,35 +2,26 @@ import React, { useContext, useEffect, useState } from "react";
 import { AppContext } from "../context/AppContext";
 import { toast } from "react-toastify";
 import axios from "axios";
+
 const MyAppointments = () => {
-  const { backendUrl, token, getDoctorsData } = useContext(AppContext);
+  const { backendUrl, token, getDoctorData } = useContext(AppContext); // ✅ fixed function name
   const [appointments, setAppointments] = useState([]);
+
   const months = [
     "",
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
+    "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
   ];
 
   const slotDateFormat = (slotDate) => {
     const dateArray = slotDate.split("_");
-    return (
-      dateArray[0] + " " + months[Number(dateArray[1])] + " " + dateArray[2]
-    );
+    return `${dateArray[0]} ${months[Number(dateArray[1])]} ${dateArray[2]}`;
   };
+
   const getUserAppointments = async () => {
     try {
       const { data } = await axios.get(backendUrl + "/api/user/appointments", {
-        headers: { token },
+        headers: { Authorization: `Bearer ${token}` }, // ✅ correct token header
       });
       if (data.success) {
         setAppointments(data.appointments.reverse());
@@ -44,16 +35,15 @@ const MyAppointments = () => {
 
   const cancelAppointment = async (appointmentId) => {
     try {
-      //console.log(appointmentId);
       const { data } = await axios.post(
         backendUrl + "/api/user/cancel-appointment",
         { appointmentId },
-        { headers: { token } }
+        { headers: { Authorization: `Bearer ${token}` } }
       );
       if (data.success) {
         toast.success(data.message);
         getUserAppointments();
-        getDoctorsData();
+        getDoctorData(); // ✅ correct function call
       } else {
         toast.error(data.message);
       }
@@ -62,24 +52,17 @@ const MyAppointments = () => {
       toast.error(error.message);
     }
   };
+
   const appointmentPhonepe = async (appointmentId) => {
     try {
-      console.log("here");
-      console.log(token);
-
       const { data } = await axios.post(
         backendUrl + "/api/user/payment-phonepe",
         { appointmentId },
-        { headers: { token } }
+        { headers: { Authorization: `Bearer ${token}` } }
       );
 
-      console.log("response:", data);
-
       if (data.success) {
-        const redirectUrl = data.redirectUrl;
-        console.log("Redirecting to:", redirectUrl);
-
-        window.location.href = redirectUrl;
+        window.location.href = data.redirectUrl;
       }
     } catch (err) {
       console.log("error message from payment:", err);
@@ -87,9 +70,7 @@ const MyAppointments = () => {
   };
 
   useEffect(() => {
-    if (token) {
-      getUserAppointments();
-    }
+    if (token) getUserAppointments();
   }, [token]);
 
   return (
@@ -100,8 +81,8 @@ const MyAppointments = () => {
       <div>
         {appointments.map((item, index) => (
           <div
-            className="grid grid-cols-[1fr_2fr] gap-4 sm:flex sm:gap-6 py-2 border-b"
             key={index}
+            className="grid grid-cols-[1fr_2fr] gap-4 sm:flex sm:gap-6 py-2 border-b"
           >
             <div>
               <img
@@ -116,11 +97,11 @@ const MyAppointments = () => {
               </p>
               <p>{item.docData.speciality}</p>
               <p className="text-zinc-700 font-medium mt-1">Address:</p>
-              <p className="text-xs ">{item.docData.address.line1}</p>
-              <p className="text-xs ">{item.docData.address.line2}</p>
+              <p className="text-xs">{item.docData.address.line1}</p>
+              <p className="text-xs">{item.docData.address.line2}</p>
               <p className="text-xs mt-1">
-                <span>DATE & TIME :</span> {slotDateFormat(item.slotDate)} |{" "}
-                {item.slotTime}
+                <span>DATE & TIME :</span>{" "}
+                {slotDateFormat(item.slotDate)} | {item.slotTime}
               </p>
             </div>
             <div></div>
@@ -130,13 +111,12 @@ const MyAppointments = () => {
                   Payment Done
                 </div>
               )}
-
               {!item.cancelled && !item.isCompleted && (
                 <button
                   onClick={() => appointmentPhonepe(item._id)}
-                  className="text-sm text-stone-500 text-center sm:min-w-48 py-2 border  hover:bg-primary hover:text-white transition-all duration-300"
+                  className="text-sm text-stone-500 text-center sm:min-w-48 py-2 border hover:bg-primary hover:text-white transition-all duration-300"
                 >
-                  Pay Online{" "}
+                  Pay Online
                 </button>
               )}
               {!item.cancelled && (
