@@ -17,7 +17,7 @@
 - Search doctors by specialization
 - View doctor details and book appointments
 - Upload prescriptions for AI-based analysis (PharmaMate)
-- Online payment integration with PhonePe (UAT)
+- Online payment integration with PhonePe 
 - Secure signup/login using JWT
 - View and manage appointment history
 
@@ -34,9 +34,9 @@
 - View system-wide analytics
 
 ### 🧠 PharmaMate – AI Assistant
-- Python Flask backend for medical NLP
+- Python FastAPI backend for medical NLP
 - Understands prescription data
-- Uses BERT/transformers/NLTK for predictions
+- Uses Spacy/ClinicalBERT for predictions
 
 ---
 
@@ -46,10 +46,10 @@
 |--------------|-----------------------------------------------|
 | **Frontend** | React.js, Tailwind CSS, React Router, Axios   |
 | **Backend**  | Node.js, Express.js, MongoDB, Mongoose        |
-| **AI Server**| Python, Flask, Transformers, NLTK             |
+| **AI Server**| Python, FastAPI                               |
 | **Cloud**    | Cloudinary (file uploads), MongoDB Atlas      |
-| **Payment**  | PhonePe UAT APIs (payment gateway)            |
-| **Auth**     | JWT, LocalStorage, Context API                |
+| **Payment**  | PhonePe APIs (payment gateway)                |
+| **Auth**     | JWT, LocalStorage                             |
 
 ---
 
