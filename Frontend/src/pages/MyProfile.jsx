@@ -17,30 +17,31 @@ const MyProfile = () => {
             formData.append('gender', userData.gender);
             formData.append('dob', userData.dob);
 
-            image && formData.append('image',image)
+            image && formData.append('image', image);
 
-            const {data} = await axios.post(backendUrl + '/api/user/update-profile',formData,{headers:{token}} )
+            const { data } = await axios.post(backendUrl + '/api/user/update-profile', formData, {
+                headers: { Authorization: `Bearer ${token}` }
+            });
     
-           if(data.success){
-                toast.success(data.message)
-                await loadUserProfileData()
-                setIsEdit(false)
-                setImage(false)
-           }
-           else{
-              toast.error(data.message)
-           }
+            if (data.success) {
+                toast.success(data.message);
+                await loadUserProfileData();
+                setIsEdit(false);
+                setImage(false);
+            } else {
+                toast.error(data.message);
+            }
     
         } catch (error) {
             console.error("Error while updating profile:", error);
-            toast.error(error.message)
+            toast.error(error.message);
         }
     };
     
-    useEffect(()=>{
-          console.log(userData)
-          loadUserProfileData()
-        },[])
+    useEffect(() => {
+        console.log(userData);
+        loadUserProfileData();
+    }, []);
 
     return userData && (
         <div className='max-w-lg flex flex-col gap-2 text-sm'>

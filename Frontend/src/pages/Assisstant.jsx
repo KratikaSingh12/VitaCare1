@@ -5,18 +5,21 @@ import { Button } from "../components/button.jsx";
 import axios from "axios";
 import { Camera, Search, History } from "lucide-react";
 import { AppContext } from "../context/AppContext.jsx";
+
 export default function PrescriptionScanner() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [analysisResult, setAnalysisResult] = useState(null);
   const [suggestedMedicines, setSuggestedMedicines] = useState([]);
   const [possibleconditions, setpossibleconditions] = useState([]);
   const { backendUrl } = useContext(AppContext);
+  
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     if (file) {
       setSelectedImage(file);
     }
   };
+  
   const analyzePrescription = async () => {
     if (!selectedImage) {
       alert("Please select an image first!");
@@ -32,22 +35,21 @@ export default function PrescriptionScanner() {
         formData
       );
       console.log(response.data);
-      //const data = await response.json();
-      //console.log("Analysis Result:", data);
       setAnalysisResult(response.data);
     } catch (error) {
       console.error("Error analyzing prescription:", error);
     }
   };
+  
   const suggestMedicines = async () => {
-    console.log("here clicked");
     if (!analysisResult) {
       alert("Please upload image and check recommended specialist first");
       return;
     }
+    
     try {
       const response = await fetch(
-        backendUrl+"/api/suggest-medicines",
+        backendUrl + "/api/suggest-medicines",
         {
           method: "POST",
           headers: {
@@ -67,6 +69,7 @@ export default function PrescriptionScanner() {
       console.log("Error suggesting medicines: ", error);
     }
   };
+  
   const formatLinkTitle = (url) => {
     try {
       const path = new URL(url).pathname;

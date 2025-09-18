@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import axios from "axios";
 
 const MyAppointments = () => {
-  const { backendUrl, token, getDoctorData } = useContext(AppContext); // ✅ fixed function name
+  const { backendUrl, token, getDoctorData } = useContext(AppContext);
   const [appointments, setAppointments] = useState([]);
 
   const months = [
@@ -21,7 +21,7 @@ const MyAppointments = () => {
   const getUserAppointments = async () => {
     try {
       const { data } = await axios.get(backendUrl + "/api/user/appointments", {
-        headers: { Authorization: `Bearer ${token}` }, // ✅ correct token header
+        headers: { Authorization: `Bearer ${token}` },
       });
       if (data.success) {
         setAppointments(data.appointments.reverse());
@@ -43,7 +43,7 @@ const MyAppointments = () => {
       if (data.success) {
         toast.success(data.message);
         getUserAppointments();
-        getDoctorData(); // ✅ correct function call
+        getDoctorData();
       } else {
         toast.error(data.message);
       }

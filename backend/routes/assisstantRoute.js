@@ -15,11 +15,11 @@ router.post("/analyze-prescription", upload.single("image"), async (req, res) =>
 
     const formData = new FormData();
     formData.append("image", fs.createReadStream(file.path), file.originalname);
-    console.log("why fear")
+    
     const response = await axios.post(`${process.env.PYTHON_BACKEND_URL}/upload`, formData, {
       headers: formData.getHeaders(),
     });
-    console.log("first processing done",response.data)
+    
     fs.unlink(file.path, (err) => {
       if (err) {
         console.error("Error deleting file:", err.message);
@@ -37,7 +37,7 @@ router.post("/analyze-prescription", upload.single("image"), async (req, res) =>
 router.post("/suggest-medicines", async (req, res) => {
   try {
     const { extracted_text } = req.body;
-    console.log(extracted_text)
+    
     if (!extracted_text) {
       return res.status(400).json({ error: "Missing extracted_text" });
     }
@@ -45,8 +45,7 @@ router.post("/suggest-medicines", async (req, res) => {
     const response = await axios.post(`${process.env.PYTHON_BACKEND_URL}/suggest-medicines`, {
       extracted_text,
     });
-    console.log(response.data)
-    console.log(response.data.conditions)
+    
     res.json(response.data);
   } catch (err) {
     console.error("Error:", err.message);
