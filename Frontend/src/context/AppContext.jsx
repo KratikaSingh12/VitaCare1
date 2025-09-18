@@ -12,7 +12,7 @@ const AppContextProvider = (props) => {
 
 
     const [doctors, setDoctors] = useState([]);
-    const [token, setToken] = useState(localStorage.getItem('token') || '');
+    const [token, setToken] = useState(localStorage.getItem('token') || false);
     const [userData, setUserData] = useState(false);
 
     const getDoctorData = async () => {
@@ -31,9 +31,9 @@ const AppContextProvider = (props) => {
 
     const loadUserProfileData = async () => {
         try {
-            const { data } = await axios.get(backendUrl + '/api/user/get-profile', { headers: {
-                Authorization: `Bearer ${token}`
-            }});
+            const { data } = await axios.get(backendUrl + '/api/user/get-profile', { 
+                headers: { Authorization: `Bearer ${token}` }
+            });
 
             if (data.success) {
                 setUserData(data.userData);
@@ -46,6 +46,13 @@ const AppContextProvider = (props) => {
         }
     };
 
+    // Set token from localStorage on app load
+    useEffect(() => {
+        const storedToken = localStorage.getItem('token');
+        if (storedToken) {
+            setToken(storedToken);
+        }
+    }, []);
     useEffect(() => {
         getDoctorData();
     }, []);
@@ -53,6 +60,8 @@ const AppContextProvider = (props) => {
     useEffect(() => {
         if (token) {
             loadUserProfileData();
+        } else {
+            setUserData(false);
         }
     }, [token]);
 

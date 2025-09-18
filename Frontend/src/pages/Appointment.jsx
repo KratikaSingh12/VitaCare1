@@ -99,7 +99,6 @@ const Appointment = () => {
         backendUrl + '/api/user/book-appointment',
         { docId, slotDate, slotTime },
         { headers: { Authorization: `Bearer ${token}` } }
-
       );
 
       if (data.success) {
@@ -110,8 +109,12 @@ const Appointment = () => {
         toast.error(data.message);
       }
     } catch (error) {
-      console.log(error);
-      toast.error(error.message);
+      console.error('Booking Error:', error);
+      if (error.response && error.response.data && error.response.data.message) {
+        toast.error(error.response.data.message);
+      } else {
+        toast.error('Failed to book appointment. Please try again.');
+      }
     }
   };
 

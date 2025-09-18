@@ -1,9 +1,8 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Card, CardContent } from "../components/Card.jsx";
-import { Input } from "../components/input.jsx";
 import { Button } from "../components/button.jsx";
 import axios from "axios";
-import { Camera, Search, History } from "lucide-react";
+import { Camera, Search } from "lucide-react";
 import { AppContext } from "../context/AppContext.jsx";
 
 export default function PrescriptionScanner() {
@@ -11,12 +10,17 @@ export default function PrescriptionScanner() {
   const [analysisResult, setAnalysisResult] = useState(null);
   const [suggestedMedicines, setSuggestedMedicines] = useState([]);
   const [possibleconditions, setpossibleconditions] = useState([]);
+  const [loading, setLoading] = useState(false);
   const { backendUrl } = useContext(AppContext);
   
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     if (file) {
       setSelectedImage(file);
+      // Reset previous results when new image is selected
+      setAnalysisResult(null);
+      setSuggestedMedicines([]);
+      setpossibleconditions([]);
     }
   };
   
@@ -26,6 +30,7 @@ export default function PrescriptionScanner() {
       return;
     }
 
+    setLoading(true);
     const formData = new FormData();
     formData.append("image", selectedImage);
 
@@ -34,10 +39,12 @@ export default function PrescriptionScanner() {
         backendUrl + "/api/analyze-prescription",
         formData
       );
-      console.log(response.data);
       setAnalysisResult(response.data);
     } catch (error) {
       console.error("Error analyzing prescription:", error);
+      alert("Error analyzing prescription. Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
   
@@ -47,6 +54,7 @@ export default function PrescriptionScanner() {
       return;
     }
     
+    setLoading(true);
     try {
       const response = await fetch(
         backendUrl + "/api/suggest-medicines",
@@ -62,30 +70,16 @@ export default function PrescriptionScanner() {
       );
 
       const data = await response.json();
-      console.log("Medicine Suggestions:", data);
       setSuggestedMedicines(data.recommended_drugs || []);
       setpossibleconditions(data.conditions || []);
     } catch (error) {
-      console.log("Error suggesting medicines: ", error);
+      console.error("Error suggesting medicines: ", error);
+      alert("Error getting medicine suggestions. Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
   
-  const formatLinkTitle = (url) => {
-    try {
-      const path = new URL(url).pathname;
-      const segments = path.split("/").filter(Boolean);
-      if (segments.length === 0) return "MedlinePlus";
-
-      const rawTitle = segments[segments.length - 1];
-      return rawTitle
-        .replace(/[-_]/g, " ")
-        .replace(/\.\w+$/, "")
-        .replace(/\b\w/g, (char) => char.toUpperCase());
-    } catch {
-      return "Resource";
-    }
-  };
-
   return (
     <div className="flex flex-col items-center justify-center p-6 bg-gradient-to-b from-blue-100 to-gray-100 min-h-screen">
       <h1 className="text-3xl font-extrabold text-blue-700 mb-6">
@@ -122,9 +116,12 @@ export default function PrescriptionScanner() {
           <Button
             className="bg-blue-600 hover:bg-blue-700 text-white transition-all py-2 rounded-lg flex items-center justify-center gap-2"
             onClick={analyzePrescription}
+            disabled={loading || !selectedImage}
           >
             <Search className="w-5 h-5" /> Analyze Prescription
+            {loading ? "Analyzing..." : "Analyze Prescription"}
           </Button>
+
           {analysisResult && (
             <div className="mt-4 p-4 bg-green-50 border border-green-300 rounded-md text-green-800 text-sm">
               <p>
@@ -136,7 +133,7 @@ export default function PrescriptionScanner() {
                 {analysisResult.specialist}
               </p>
               <p>
-                <strong>Suggested Treatments:</strong>{" "}
+                <strong>💊 Suggested Treatments:</strong>{" "}
                 {analysisResult.treatment}
               </p>
             </div>
@@ -152,10 +149,13 @@ export default function PrescriptionScanner() {
             variant="outline"
             className="flex items-center gap-2 border-gray-800 hover:bg-gray-100"
             onClick={suggestMedicines}
+            disabled={loading || !analysisResult}
           >
-            <h3 className="text-blue-600">
+            <span className="text-blue-600">
+              {loading ? "Loading..." : 
               See Possible Conditions and Drugs for Cure
-            </h3>
+              }
+            </span>
           </Button>
 
           {suggestedMedicines.length > 0 && (

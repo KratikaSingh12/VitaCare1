@@ -8,9 +8,11 @@ const Navbar = () => {
   const { token, setToken , userData } = useContext(AppContext);
   const [showMenu, setShowMenu] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+
   const logout = () => {
-    setToken(false);
-    //localStorage.removeItem('token');
+    setToken('');
+    localStorage.removeItem('token');
+    navigate('/');
   };
 
   return (
@@ -39,7 +41,7 @@ const Navbar = () => {
 
       {/* Right Section */}
       <div className=" flex items-center gap-4">
-        {token  && userData ?  (
+        {token && userData ? (
           <div className="relative cursor-pointer">
           <div
             onClick={() => setDropdownOpen(prev => !prev)}

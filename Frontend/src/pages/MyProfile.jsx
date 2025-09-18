@@ -4,8 +4,7 @@ import { AppContext } from '../context/AppContext';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 const MyProfile = () => {
-    const {loadUserProfileData}=useContext(AppContext);
-    const {userData, setUserData , token , backendUrl} = useContext(AppContext);
+    const { loadUserProfileData, userData, setUserData, token, backendUrl } = useContext(AppContext);
     const [isEdit, setIsEdit] = useState(false);
     const [image, setImage] = useState(false);
 
@@ -34,14 +33,19 @@ const MyProfile = () => {
     
         } catch (error) {
             console.error("Error while updating profile:", error);
-            toast.error(error.message);
+            if (error.response && error.response.data && error.response.data.message) {
+                toast.error(error.response.data.message);
+            } else {
+                toast.error("Failed to update profile. Please try again.");
+            }
         }
     };
     
     useEffect(() => {
-        console.log(userData);
-        loadUserProfileData();
-    }, []);
+        if (token) {
+            loadUserProfileData();
+        }
+    }, [token]);
 
     return userData && (
         <div className='max-w-lg flex flex-col gap-2 text-sm'>

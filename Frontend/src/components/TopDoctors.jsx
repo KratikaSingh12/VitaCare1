@@ -20,7 +20,7 @@ const TopDoctors = () => {
             key={index}
             onClick={() => {
               navigate(`/appointment/${item._id}`);
-              scrollTo(0, 0);
+             window.scrollTo(0, 0);
             }}
             className="border border-[#C9D8FF] rounded-xl overflow-hidden cursor-pointer hover:translate-y-[-10px] transition-all duration-500"
           >
@@ -52,7 +52,7 @@ const TopDoctors = () => {
       <button
         onClick={() => {
           navigate('/doctors');
-          scrollTo(0, 0);
+          window.scrollTo(0, 0);
         }}
         className="bg-[#EAEFFF] text-gray-600 px-12 py-3 rounded-full mt-10"
       >

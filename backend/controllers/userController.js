@@ -49,7 +49,7 @@ const registerUser = async (req, res) => {
       expiresIn: "1d",
     });
 
-    return res.json({ success: true, token, user });
+    return res.json({ success: true, token });
   } catch (error) {
     console.log(error);
     return res.json({ success: false, message: error.message });
@@ -75,7 +75,7 @@ const loginUser = async (req, res) => {
       expiresIn: "1d",
     });
 
-    return res.json({ success: true, token, user });
+    return res.json({ success: true, token });
   } catch (error) {
     console.log(error);
     return res.json({ success: false, message: error.message });
@@ -262,8 +262,7 @@ const PaymentPhonepe = async (req, res) => {
     );
 
     if (response.data.success && response.data.code === "PAYMENT_INITIATED") {
-      const redirectUrl =
-      console.log(redirectUrl);
+      const redirectUrl = response.data.data.instrumentResponse.redirectInfo.url;
       return res.status(200).json({
         success: true,
         message: "Payment initiated. Redirecting to payment page.",

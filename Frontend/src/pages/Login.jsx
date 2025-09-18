@@ -9,14 +9,12 @@ const Login = () => {
   const navigate = useNavigate();
 
   const [state, setState] = useState("Sign Up");
-  const [email, setEmail] = useState("test@gmail.com");
-  const [password, setPassword] = useState("password123");
-  const [name, setName] = useState("Test User");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
 
   const onSubmitHandler = async (event) => {
     event.preventDefault();
-    console.log("🟢 Form submitted");
-    console.log("🌐 backendUrl:", backendUrl);
 
     try {
       if (!backendUrl) {
@@ -31,10 +29,9 @@ const Login = () => {
           password,
         });
 
-        console.log("📨 Register API response:", data);
         if (data.success) {
-          setToken(data.token);
           localStorage.setItem("token", data.token);
+          setToken(data.token);
           toast.success("Account created successfully!");
         } else {
           toast.error(data.message || "Registration failed");
@@ -45,18 +42,21 @@ const Login = () => {
           password,
         });
 
-        console.log("📨 Login API response:", data);
         if (data.success) {
-          setToken(data.token);
           localStorage.setItem("token", data.token);
+          setToken(data.token);
           toast.success("Login successful!");
         } else {
           toast.error(data.message || "Login failed");
         }
       }
     } catch (error) {
-      console.log("❌ Error:", error);
-      toast.error(error.message || "Something went wrong");
+      console.error("Login/Register Error:", error);
+      if (error.response && error.response.data && error.response.data.message) {
+        toast.error(error.response.data.message);
+      } else {
+        toast.error("Something went wrong. Please try again.");
+      }
     }
   };
 

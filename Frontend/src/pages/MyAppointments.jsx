@@ -25,11 +25,14 @@ const MyAppointments = () => {
       });
       if (data.success) {
         setAppointments(data.appointments.reverse());
-        console.log(data.appointments);
       }
     } catch (error) {
-      console.log(error);
-      toast.error(error.message);
+      console.error('Get Appointments Error:', error);
+      if (error.response && error.response.data && error.response.data.message) {
+        toast.error(error.response.data.message);
+      } else {
+        toast.error('Failed to load appointments.');
+      }
     }
   };
 
@@ -48,8 +51,12 @@ const MyAppointments = () => {
         toast.error(data.message);
       }
     } catch (error) {
-      console.log(error);
-      toast.error(error.message);
+      console.error('Cancel Appointment Error:', error);
+      if (error.response && error.response.data && error.response.data.message) {
+        toast.error(error.response.data.message);
+      } else {
+        toast.error('Failed to cancel appointment.');
+      }
     }
   };
 
@@ -63,9 +70,16 @@ const MyAppointments = () => {
 
       if (data.success) {
         window.location.href = data.redirectUrl;
+      } else {
+        toast.error(data.message || 'Payment initiation failed');
       }
-    } catch (err) {
-      console.log("error message from payment:", err);
+    } catch (error) {
+      console.error("Payment Error:", error);
+      if (error.response && error.response.data && error.response.data.message) {
+        toast.error(error.response.data.message);
+      } else {
+        toast.error('Payment failed. Please try again.');
+      }
     }
   };
 
