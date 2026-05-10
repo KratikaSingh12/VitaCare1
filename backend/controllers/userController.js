@@ -8,6 +8,7 @@ import { v2 as cloudinary } from "cloudinary";
 import doctorModel from "../models/doctorModel.js";
 import appointmentModel from "../models/appointmentModel.js"
 import dotenv from "dotenv"
+import razorpayInstance from "../config/razorpay.js";
 dotenv.config();
 //import appointmentModel from "../models/appointmentModel.js";
 // API to register user
@@ -46,7 +47,7 @@ const registerUser = async (req, res) => {
     const user = await newUser.save();
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: "1d",
+      expiresIn: "30d",
     });
 
     return res.json({ success: true, token });
@@ -72,7 +73,7 @@ const loginUser = async (req, res) => {
     }
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: "1d",
+      expiresIn: "30d",
     });
 
     return res.json({ success: true, token });
@@ -97,22 +98,59 @@ const getProfile = async (req, res) => {
 // API to update profile
 const updateProfile = async (req, res) => {
   try {
-    const { userId, name, phone, dob, gender } = req.body;
-    const imageFile = req.file;
+    const {
+  userId,
+  name,
+  phone,
+  gender,
+  age,
+} = req.body;
+
+const imageFile = req.file;
+
+if (
+  !name ||
+  !phone ||
+  !gender ||
+  !age
+) {
+
+  return res.json({
+    success: false,
+    message: "Data Missing",
+  });
+
+}
     
-    if (!name || !phone || !dob || !gender) {
-      return res.json({ success: false, message: "Data Missing" });
-    }
+    await userModel.findByIdAndUpdate(userId, { name, phone, gender,age });
     
-    await userModel.findByIdAndUpdate(userId, { name, phone, dob, gender });
-    
-    if (imageFile) {
-      const imageUpload = await cloudinary.uploader.upload(imageFile.path, {
+    let imageURL = userData.image;
+
+if (imageFile) {
+
+  const imageUpload =
+    await cloudinary.uploader.upload(
+      imageFile.path,
+      {
         resource_type: "image",
-      });
-      const imageURL = imageUpload.secure_url;
-      await userModel.findByIdAndUpdate(userId, { image: imageURL });
-    }
+      }
+    );
+
+  imageURL =
+    imageUpload.secure_url;
+
+}
+
+await userModel.findByIdAndUpdate(
+  userId,
+  {
+    name,
+    phone,
+    gender,
+    age,
+    image: imageURL,
+  }
+);
     
     res.json({ success: true, message: "Profile Updated" });
   } catch (error) {
@@ -123,51 +161,148 @@ const updateProfile = async (req, res) => {
 
 // API to book appointment
 const bookAppointment = async (req, res) => {
+
   try {
-    const { userId, docId, slotDate, slotTime } = req.body;
-    
-    const docData = await doctorModel.findById(docId).select("-password");
 
-    if (!docData.available) {
-      return res.json({ success: false, message: "Doctor not available" });
-    }
-    
-    let slots_booked = docData.slots_booked;
-
-    if (slots_booked[slotDate]) {
-      if (slots_booked[slotDate].includes(slotTime)) {
-        return res.json({ success: false, message: "Slot not available" });
-      } else {
-        slots_booked[slotDate].push(slotTime);
-      }
-    } else {
-      slots_booked[slotDate] = [];
-      slots_booked[slotDate].push(slotTime);
-    }
-    
-    const userData = await userModel.findById(userId).select("-password");
-    delete docData.slots_booked;
-
-    const appointmentData = {
+    const {
       userId,
       docId,
-      userData,
-      docData,
-      amount: docData.fees,
-      slotTime,
       slotDate,
+      slotTime,
+      patientData,
+    } = req.body;
+
+    // ✅ doctor fetch
+    const docData = await doctorModel
+      .findById(docId)
+      .select("-password");
+
+    if (!docData) {
+
+      return res.json({
+        success: false,
+        message: "Doctor not found",
+      });
+
+    }
+
+    // ✅ availability check
+    if (!docData.available) {
+
+      return res.json({
+        success: false,
+        message: "Doctor not available",
+      });
+
+    }
+
+    let slots_booked =
+      docData.slots_booked || {};
+
+    // ✅ slot check
+    if (slots_booked[slotDate]) {
+
+      if (
+        slots_booked[
+          slotDate
+        ].includes(slotTime)
+      ) {
+
+        return res.json({
+          success: false,
+          message:
+            "Slot not available",
+        });
+
+      } else {
+
+        slots_booked[
+          slotDate
+        ].push(slotTime);
+
+      }
+
+    } else {
+
+      slots_booked[slotDate] =
+        [];
+
+      slots_booked[
+        slotDate
+      ].push(slotTime);
+
+    }
+
+    // ✅ user fetch
+    const userData = await userModel
+      .findById(userId)
+      .select("-password");
+
+    // ✅ appointment data
+    const appointmentData = {
+
+      userId,
+
+      docId,
+
+      slotDate,
+
+      slotTime,
+
+      userData,
+
+      patientData,
+
+      docData,
+
+      amount:
+        docData.fees,
+
+      payment: true,
+
+      cancelled: false,
+
+      isCompleted: false,
+
       date: Date.now(),
+
     };
-    
-    const newAppointment = new appointmentModel(appointmentData);
+
+    // ✅ save appointment
+    const newAppointment =
+      new appointmentModel(
+        appointmentData
+      );
+
     await newAppointment.save();
-    await doctorModel.findByIdAndUpdate(docId, { slots_booked });
-    
-    res.json({ success: true, message: "Appointment Booked" });
+
+    // ✅ update doctor slots
+    await doctorModel.findByIdAndUpdate(
+      docId,
+      {
+        slots_booked,
+      }
+    );
+
+    return res.json({
+      success: true,
+      message:
+        "Appointment Booked Successfully",
+      appointment:
+        newAppointment,
+    });
+
   } catch (error) {
+
     console.log(error);
-    res.json({ success: false, message: error.message });
+
+    return res.json({
+      success: false,
+      message: error.message,
+    });
+
   }
+
 };
 
 // API to get user appointments for frontend my-appointments page
@@ -189,9 +324,12 @@ const cancelAppointment = async (req, res) => {
     const appointmentData = await appointmentModel.findById(appointmentId);
 
     // Verify appointment user
-    if (appointmentData.userId !== userId) {
-      return res.json({ success: false, message: "Unauthorized action" });
-    }
+    if (appointmentData.userId.toString() !== userId.toString()) {
+  return res.json({
+    success: false,
+    message: "Unauthorized action",
+  });
+}
     
     await appointmentModel.findByIdAndUpdate(appointmentId, {
       cancelled: true,
@@ -201,7 +339,14 @@ const cancelAppointment = async (req, res) => {
     const { docId, slotDate, slotTime } = appointmentData;
     const doctorData = await doctorModel.findById(docId);
     let slots_booked = doctorData.slots_booked;
-    slots_booked[slotDate] = slots_booked[slotDate].filter((e) => e !== slotTime);
+    if (slots_booked[slotDate]) {
+
+  slots_booked[slotDate] =
+    slots_booked[slotDate].filter(
+      (e) => e !== slotTime
+    );
+
+}
     await doctorModel.findByIdAndUpdate(docId, { slots_booked });
     
     res.json({ success: true, message: "Appointment Cancelled" });
@@ -216,71 +361,47 @@ const generateChecksum = (payloadBase64, saltKey, saltIndex) => {
   const hash = crypto.createHash("sha256").update(stringToSign).digest("hex");
   return `${hash}###${saltIndex}`;
 };
-const PaymentPhonepe = async (req, res) => {
+const razorpayPayment = async (req, res) => {
+
   try {
-    const { appointmentId } = req.body;
-    const appointment = await appointmentModel.findById(appointmentId);
-    
-    if (!appointment || appointment.cancelled) {
-      return res
-        .status(400)
-        .json({ success: false, message: "Invalid or cancelled appointment" });
-    }
 
-    const amount = parseInt(appointment.amount) * 100;
-    const merchantTransactionId = appointment._id.toString();
-    
-    const payload = {
-      merchantId: process.env.PHONEPE_MERCHANT_ID,
-      merchantTransactionId,
-      merchantUserId: appointment.userId || "guest_user",
-      amount,
-      callbackUrl: process.env.CALLBACK_URL,
-      redirectUrl: `${process.env.FRONTEND_URL}/my-appointments`,
-      paymentInstrument: { type: "PAY_PAGE" },
+    const { amount } = req.body;
+
+    const options = {
+
+      amount: amount * 100,
+
+      currency: "INR",
+
+      receipt: "receipt_" + Date.now(),
+
     };
-    
-    const payloadBase64 = Buffer.from(JSON.stringify(payload)).toString(
-      "base64"
-    );
-    const xVerify = generateChecksum(
-      payloadBase64,
-      process.env.PHONEPE_SALT_KEY,
-      process.env.PHONEPE_SALT_INDEX
-    );
 
-    const response = await axios.post(
-      process.env.PHONEPE_API_ENDPOINT,
-      { request: payloadBase64 },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          "X-VERIFY": xVerify,
-          "X-MERCHANT-ID": process.env.PHONEPE_MERCHANT_ID,
-        },
-      }
-    );
+    const order =
+      await razorpayInstance.orders.create(options);
 
-    if (response.data.success && response.data.code === "PAYMENT_INITIATED") {
-      const redirectUrl = response.data.data.instrumentResponse.redirectInfo.url;
-      return res.status(200).json({
-        success: true,
-        message: "Payment initiated. Redirecting to payment page.",
-        redirectUrl: redirectUrl,
-      });
-    } else {
-      return res.status(400).json({
-        success: false,
-        message: "Failed to initiate payment.",
-        data: response.data,
-      });
-    }
-  } catch (err) {
-    console.error(err.message);
-    res
-      .status(500)
-      .json({ success: false, message: "Payment creation failed" });
+    res.json({
+
+      success: true,
+
+      order,
+
+    });
+
+  } catch (error) {
+
+    console.log(error);
+
+    res.json({
+
+      success: false,
+
+      message: error.message,
+
+    });
+
   }
+
 };
 // Server to server callback
 const paymentCallback = async (req, res) => {
@@ -316,6 +437,119 @@ const paymentCallback = async (req, res) => {
       .status(500)
       .json({ success: false, message: "Error processing callback." });
   }
+  
+};
+const predictDepartment = async (req, res) => {
+  try {
+
+    const { symptom } = req.body;
+
+    const response = await axios.post(
+      "http://127.0.0.1:8000/predict",
+      {
+        symptom
+      }
+    );
+
+    res.json({
+      success: true,
+      result: response.data
+    });
+
+  } catch (error) {
+
+    console.log(error);
+
+    res.json({
+      success: false,
+      message: error.message
+    });
+  }
+};
+const createEmergencyAppointment = async (req, res) => {
+
+  try {
+
+    const { userId, symptoms } = req.body;
+
+    const emergencyDoctor = await doctorModel.findOne();
+
+    if (!emergencyDoctor) {
+
+      return res.json({
+        success: false,
+        message: "No doctor available"
+      });
+
+    }
+
+    const emergencyCharge = 200;
+
+    const totalAmount =
+      emergencyDoctor.fees + emergencyCharge;
+
+    const userData =
+      await userModel.findById(userId).select("-password");
+
+    const appointmentData = {
+
+      userId,
+
+      docId: emergencyDoctor._id,
+
+      userData,
+
+      slotDate:
+    new Date().toLocaleDateString(),
+
+  slotTime:
+    new Date().toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+    }),
+
+      docData: emergencyDoctor,
+
+      amount: emergencyDoctor.fees,
+
+      paymentAmount: totalAmount,
+
+      isEmergency: true,
+
+      symptoms,
+
+      date: Date.now(),
+
+    };
+
+    const newAppointment =
+      new appointmentModel(appointmentData);
+
+    await newAppointment.save();
+
+    res.json({
+
+      success: true,
+
+      appointmentId: newAppointment._id,
+
+      totalAmount,
+
+      message: "Emergency appointment created"
+
+    });
+
+  } catch (error) {
+
+    console.log(error);
+
+    res.json({
+      success: false,
+      message: error.message
+    });
+
+  }
+
 };
 export {
   registerUser,
@@ -325,6 +559,8 @@ export {
   bookAppointment,
   listAppointment,
   cancelAppointment,
-  PaymentPhonepe,
+  razorpayPayment,
   paymentCallback,
+  predictDepartment,
+  createEmergencyAppointment,
 };

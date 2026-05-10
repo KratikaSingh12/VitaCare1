@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import { AdminContext } from '../../context/AdminContext'
-
+import { Link } from "react-router-dom";
 const DoctorsList = () => {
 
   const { doctors, aToken, getAllDoctors, changeAvailability } = useContext(AdminContext);
@@ -16,7 +16,11 @@ const DoctorsList = () => {
       <h1 className='text-lg font-medium'>All Doctors</h1>
       <div className='w-full flex flex-wrap gap-4 pt-5 gap-y-6'>
         {doctors.map((item, index) => (
-          <div className='border border-indigo-200 rounded-xl max-w-56 overflow-hidden cursor-pointer' key={index}>
+          <Link
+          key={item._id}
+  to={`/doctor/${item._id}`}
+  className='border rounded-xl overflow-hidden cursor-pointer hover:shadow-lg transition-all'
+>
             <img className='bg-indigo-50 group-hover:bg-primary transition-all-duration' src={item.image} alt="" />
             <div className='p-4'>
               <p className='text-neutral-800 text-lg font-medium'>{item.name}</p>
@@ -33,7 +37,7 @@ const DoctorsList = () => {
                 <p>Available</p>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

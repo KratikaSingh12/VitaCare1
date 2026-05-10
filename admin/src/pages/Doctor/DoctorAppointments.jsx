@@ -41,8 +41,14 @@ const DoctorAppointments = () => {
                 {item.payment?'Online':'CASH'}
               </p>
             </div>
-            <p className='max-sm:hidden'>{calculateAge(item.userData.dob)}</p>
-            <p>{slotDateFormat(item.slotDate)}, {item.slotTime}</p>
+            <p className='max-sm:hidden'>{item.userData?.dob
+  ? calculateAge(item.userData.dob)
+  : "N/A"}</p>
+            <p>{<p>
+  {item.slotDate || "No Date"},
+  {" "}
+  {item.slotTime || "No Time"}
+</p>}, {item.slotTime}</p>
             <p>{currency}{item.amount}</p>
             {item.cancelled
               ? <p className='text-red-400 text-xs font-medium'>Cancelled</p>

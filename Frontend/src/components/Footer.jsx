@@ -1,53 +1,120 @@
 import React from "react";
-import { assets } from "../assets/assets";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { Heart, MapPin, Phone, Mail, Clock } from "lucide-react";
 
-const Footer = () => {
+// ✅ JSON config import
+import { siteConfig, footerLinks } from "../data/config";
+
+
+export default function Footer() {
+  
+
   return (
-    <footer className="bg-gray-50 px-6 sm:px-20 py-10 mt-24 border-t border-gray-300">
-      <div className="grid gap-10 md:grid-cols-[2fr_1fr_1fr] text-sm text-gray-700">
-        {/* Left - Logo and Description */}
-        <div>
-          <img className="w-12 mb-5" src={assets.logo} alt="HealHub Logo" />
-          <p className="max-w-md leading-6">
-            <strong>HealHub</strong> is your trusted online healthcare companion. 
-            Book doctor appointments, consult with specialists, and manage your medical journey 
-            all in one place. We're committed to making healthcare simple, secure, and accessible.
+    <footer className="border-t border-border bg-card">
+      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+        <div className="flex flex-col gap-10 lg:flex-row lg:justify-between">
+          {/* Brand */}
+          <div className="space-y-4">
+            <Link to="/" className="flex items-center gap-2">
+              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
+                <Heart className="h-5 w-5 text-primary-foreground" />
+              </div>
+              <span className="text-xl font-bold text-foreground">
+                {siteConfig?.name}
+              </span>
+            </Link>
+
+            <p className="text-sm text-muted-foreground">
+              {siteConfig?.footerDescription}
+            </p>
+
+            <div className="space-y-2">
+              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <MapPin className="h-4 w-4 flex-shrink-0" />
+                <span>{siteConfig?.contact?.address?.full}</span>
+              </div>
+
+              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <Phone className="h-4 w-4 flex-shrink-0" />
+                <span>{siteConfig?.contact?.phone}</span>
+              </div>
+
+              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <Mail className="h-4 w-4 flex-shrink-0" />
+                <span>{siteConfig?.contact?.email}</span>
+              </div>
+
+              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <Clock className="h-4 w-4 flex-shrink-0" />
+                <span>{siteConfig?.workingHours?.weekdays}</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Services */}
+          <div>
+            <h3 className="mb-4 text-sm font-semibold text-foreground">
+              Services
+            </h3>
+            <ul className="space-y-2">
+              {(footerLinks?.services || []).map((link) => (
+                <li key={link.name}>
+                  <Link
+                    to={link.href}
+                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Company */}
+          <div>
+            <h3 className="mb-4 text-sm font-semibold text-foreground">
+              Company
+            </h3>
+            <ul className="space-y-2">
+              {(footerLinks?.company || []).map((link) => (
+                <li key={link.name}>
+                  <Link
+                    to={link.href}
+                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Legal */}
+          {/* <div>
+            <h3 className="mb-4 text-sm font-semibold text-foreground">
+              Legal
+            </h3>
+            <ul className="space-y-2">
+              {(footerLinks?.legal || []).map((link) => (
+                <li key={link.name}>
+                  <Link
+                    to={link.href}
+                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div> */}
+        </div>
+
+        <div className="mt-12 border-t border-border pt-8">
+          <p className="text-center text-sm text-muted-foreground">
+            &copy; {new Date().getFullYear()} {siteConfig?.name}. All rights reserved.
           </p>
         </div>
-
-        {/* Middle - Navigation Links */}
-        <div>
-          <h4 className="text-lg font-semibold mb-4">Company</h4>
-          <ul className="space-y-2">
-            <li><NavLink to="/" className="hover:underline hover:text-[#4499dd]">Home</NavLink></li>
-            <li><NavLink to="/about" className="hover:underline hover:text-[#4499dd]">About Us</NavLink></li>
-            <li><NavLink to="/contact" className="hover:underline hover:text-[#4499dd]">Contact Us</NavLink></li>
-            <li><NavLink to="/privacy-policy" className="hover:underline hover:text-[#4499dd]">Privacy Policy</NavLink></li>
-          </ul>
-        </div>
-
-        {/* Right - Contact Info */}
-        <div>
-          <h4 className="text-lg font-semibold mb-4">Get in Touch</h4>
-          <ul className="space-y-2">
-            <li>
-              <a href="tel:+919084426799" className="hover:underline hover:text-[#4499dd]">+91-9084426799</a>
-            </li>
-            <li>
-              <a href="mailto:healhub247@gmail.com" className="hover:underline hover:text-[#4499dd]">healhub247@gmail.com</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      {/* Copyright */}
-      <div className="mt-10 text-center text-gray-500 text-xs">
-        <hr className="mb-4" />
-        <p>© 2025 HealHub. All rights reserved.</p>
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

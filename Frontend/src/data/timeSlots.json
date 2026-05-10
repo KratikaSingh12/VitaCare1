@@ -1,0 +1,8 @@
+{
+  "startHour": 9,
+  "endHour": 17,
+  "intervalMinutes": 30,
+  "breaks": [
+    { "from": "12:00", "to": "14:00" }
+  ]
+}

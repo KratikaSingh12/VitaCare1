@@ -1,0 +1,88 @@
+{
+  "specialties": [
+    {
+      "id": "general-physician",
+      "name": "General Physician",
+      "icon": "Stethoscope",
+      "description": "Comprehensive primary care including routine checkups, preventive care and common illness treatment."
+    },
+    {
+      "id": "gynecologist",
+      "name": "Gynecologist",
+      "icon": "Baby",
+      "description": "Women’s health care including pregnancy support, PCOS management and menstrual health guidance."
+    },
+    {
+      "id": "dermatologist",
+      "name": "Dermatologist",
+      "icon": "Sparkles",
+      "description": "Skin, hair and nail treatments including acne, allergies, infections and cosmetic consultations."
+    },
+    {
+      "id": "pediatrician",
+      "name": "Pediatrician",
+      "icon": "Baby",
+      "description": "Specialized healthcare for infants, children and adolescents including vaccination and growth monitoring."
+    },
+    {
+      "id": "neurologist",
+      "name": "Neurologist",
+      "icon": "Brain",
+      "description": "Diagnosis and treatment of nervous system disorders including migraine, seizures and stroke-related care."
+    },
+    {
+      "id": "gastroenterologist",
+      "name": "Gastroenterologist",
+      "icon": "Stethoscope",
+      "description": "Digestive system care including acidity, liver issues, IBS, gastric problems and stomach infections."
+    },
+    {
+      "id": "cardiologist",
+      "name": "Cardiologist",
+      "icon": "HeartPulse",
+      "description": "Heart health services including BP management, ECG consultation, cholesterol control and cardiac screening."
+    },
+    {
+      "id": "orthopedic",
+      "name": "Orthopedic",
+      "icon": "Bone",
+      "description": "Bone and joint care including fractures, back pain, arthritis, sports injuries and mobility support."
+    },
+    {
+      "id": "ent",
+      "name": "ENT",
+      "icon": "Stethoscope",
+      "description": "Ear, nose and throat treatments including sinus issues, throat infections, hearing problems and allergies."
+    },
+    {
+      "id": "ophthalmologist",
+      "name": "Ophthalmologist",
+      "icon": "Sparkles",
+      "description": "Eye care including vision checkups, eye infections, dryness, cataract consultation and eye health guidance."
+    },
+    {
+      "id": "urologist",
+      "name": "Urologist",
+      "icon": "Stethoscope",
+      "description": "Urinary tract and kidney-related care including UTIs, kidney stones and bladder health consultation."
+    },
+    {
+      "id": "dentist",
+      "name": "Dentist",
+      "icon": "Sparkles",
+      "description": "Dental care including tooth pain treatment, cleaning, cavity filling, braces consultation and oral hygiene."
+    },
+    {
+      "id": "oncologist",
+      "name": "Oncologist",
+      "icon": "Stethoscope",
+      "description": "Cancer care guidance including early screening support, treatment planning and specialist consultation."
+    },
+    {
+      "id": "psychiatrist",
+      "name": "Psychiatrist",
+      "icon": "Brain",
+      "description": "Mental health support including stress management, anxiety, depression and behavioral therapy guidance."
+    }
+  ]
+}

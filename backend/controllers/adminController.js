@@ -6,6 +6,34 @@ import validator from "validator";
 import { v2 as cloudinary } from "cloudinary";
 import userModel from "../models/userModel.js";
 
+const getAllPatients = async (req, res) => {
+
+  try {
+
+    const patients =
+      await userModel
+        .find({})
+        .select("-password");
+
+    console.log(patients);
+
+    res.json({
+      success: true,
+      patients,
+    });
+
+  } catch (error) {
+
+    console.log(error);
+
+    res.json({
+      success: false,
+      message: error.message,
+    });
+
+  }
+
+};
 // API for admin login
 const loginAdmin = async (req, res) => {
     try {
@@ -124,6 +152,65 @@ const allDoctors = async (req, res) => {
         res.json({ success: false, message: error.message })
     }
 }
+// GET SINGLE DOCTOR
+const getSingleDoctor =
+  async (req, res) => {
+
+    try {
+
+      const { docId } =
+        req.params;
+
+      const doctor =
+        await doctorModel.findById(
+          docId
+        );
+
+      res.json({
+        success: true,
+        doctor,
+      });
+
+    } catch (error) {
+
+      console.log(error);
+
+      res.json({
+        success: false,
+      });
+
+    }
+
+};
+
+// REMOVE DOCTOR
+const removeDoctor =
+  async (req, res) => {
+
+    try {
+
+      const { docId } =
+        req.params;
+
+      await doctorModel.findByIdAndDelete(
+        docId
+      );
+
+      res.json({
+        success: true,
+      });
+
+    } catch (error) {
+
+      console.log(error);
+
+      res.json({
+        success: false,
+      });
+
+    }
+
+};
 
 // API to get dashboard data for admin panel
 const adminDashboard = async (req, res) => {
@@ -154,5 +241,8 @@ export {
     appointmentCancel,
     addDoctor,
     allDoctors,
-    adminDashboard
+    adminDashboard,
+    getAllPatients,
+    getSingleDoctor,
+removeDoctor
 }

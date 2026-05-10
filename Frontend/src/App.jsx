@@ -1,36 +1,50 @@
-import React from 'react';
-import { Route, Routes } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import Home from './pages/Home';
-import Doctors from './pages/Doctors';
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+
+import Home from "./pages/Home";
+import Doctors from "./pages/Doctors";
 import Appointment from "./pages/Appointment";
-import About from './pages/About';
-import Contact from './pages/Contact';
-import Login from './pages/Login';
-import MyProfile from './pages/MyProfile';
-import MyAppointments from './pages/MyAppointments';
-import Assisstant from './pages/Assisstant';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import About from "./pages/About";
+import Login from "./pages/Login";
+import Departments from "./pages/Departments";
+import DoctorProfile from "./pages/DoctorProfile";
+import SymptomChecker from "./pages/SymptomChecker";
+import Emergency from "./pages/Emergency";
+import PatientProfile from "./pages/PatientProfile";
+import MyAppointments from "./pages/MyAppointments";
+
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
   return (
-    <div className="mx-4 sm:mx-[10%]">
+    <div className="w-full">
+
       <ToastContainer />
-      <Navbar />
+
+      <Header /> {/* ✅ Header added */}
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/doctors" element={<Doctors />} />
         <Route path="/doctors/:speciality" element={<Doctors />} />
+        <Route path="/doctor/:docId" element={<DoctorProfile />} />
         <Route path="/appointment/:docId" element={<Appointment />} />
-        <Route path='/about' element={<About />} />
-        <Route path='/contact' element={<Contact />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/pharmacist-assisstant' element={<Assisstant />} />
-        <Route path='/my-profile' element={<MyProfile />} />
-        <Route path='/my-appointments' element={<MyAppointments />} />
+        <Route
+  path="/my-appointments"
+  element={<MyAppointments />}
+/>
+        <Route path="/departments" element={<Departments />} />
+        <Route path="/symptom-check" element={<SymptomChecker />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/patient-profile" element={<PatientProfile />} />
+        <Route path="/emergency" element={<Emergency />} />
       </Routes>
+
       <Footer />
     </div>
   );

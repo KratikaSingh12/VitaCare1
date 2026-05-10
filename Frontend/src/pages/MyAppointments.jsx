@@ -1,157 +1,209 @@
-import React, { useContext, useEffect, useState } from "react";
-import { AppContext } from "../context/AppContext";
-import { toast } from "react-toastify";
+import React, {
+  useEffect,
+  useState,
+} from "react";
+
 import axios from "axios";
+import { toast } from "react-toastify";
+
 
 const MyAppointments = () => {
-  const { backendUrl, token, getDoctorData } = useContext(AppContext);
-  const [appointments, setAppointments] = useState([]);
 
-  const months = [
-    "",
-    "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
-  ];
+  const backendUrl =
+    "http://localhost:5000";
 
-  const slotDateFormat = (slotDate) => {
-    const dateArray = slotDate.split("_");
-    return `${dateArray[0]} ${months[Number(dateArray[1])]} ${dateArray[2]}`;
-  };
+  const [appointments, setAppointments] =
+    useState([]);
 
-  const getUserAppointments = async () => {
+  // Get appointments
+  const getAppointments = async () => {
+
     try {
-      const { data } = await axios.get(backendUrl + "/api/user/appointments", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      if (data.success) {
-        setAppointments(data.appointments.reverse());
-      }
-    } catch (error) {
-      console.error('Get Appointments Error:', error);
-      if (error.response && error.response.data && error.response.data.message) {
-        toast.error(error.response.data.message);
-      } else {
-        toast.error('Failed to load appointments.');
-      }
-    }
-  };
 
-  const cancelAppointment = async (appointmentId) => {
-    try {
-      const { data } = await axios.post(
-        backendUrl + "/api/user/cancel-appointment",
-        { appointmentId },
-        { headers: { Authorization: `Bearer ${token}` } }
+      const token =
+        localStorage.getItem("token");
+
+      const { data } = await axios.get(
+
+        backendUrl +
+          "/api/user/appointments",
+
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+
       );
+
       if (data.success) {
+
+        setAppointments(
+          data.appointments
+        );
+
+      }
+
+    } catch (error) {
+
+      console.log(error);
+
+    }
+
+  };
+
+  // Cancel appointment
+  const cancelAppointment = async (
+    appointmentId
+  ) => {
+
+    try {
+
+      const token =
+        localStorage.getItem("token");
+
+      const { data } = await axios.post(
+
+        backendUrl +
+          "/api/user/cancel-appointment",
+
+        { appointmentId },
+
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+
+      );
+
+      if (data.success) {
+
+        toast.success("Appointment Cancelled");
+
+        // refresh appointments
+        getAppointments();
+
+      } else {
+
         toast.success(data.message);
-        getUserAppointments();
-        getDoctorData();
-      } else {
-        toast.error(data.message);
-      }
-    } catch (error) {
-      console.error('Cancel Appointment Error:', error);
-      if (error.response && error.response.data && error.response.data.message) {
-        toast.error(error.response.data.message);
-      } else {
-        toast.error('Failed to cancel appointment.');
-      }
-    }
-  };
 
-  const appointmentPhonepe = async (appointmentId) => {
-    try {
-      const { data } = await axios.post(
-        backendUrl + "/api/user/payment-phonepe",
-        { appointmentId },
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
+      }
 
-      if (data.success) {
-        window.location.href = data.redirectUrl;
-      } else {
-        toast.error(data.message || 'Payment initiation failed');
-      }
     } catch (error) {
-      console.error("Payment Error:", error);
-      if (error.response && error.response.data && error.response.data.message) {
-        toast.error(error.response.data.message);
-      } else {
-        toast.error('Payment failed. Please try again.');
-      }
+
+      console.log(error);
+
+      toast.error("Cancel failed");
+
     }
+
   };
 
   useEffect(() => {
-    if (token) getUserAppointments();
-  }, [token]);
+
+    getAppointments();
+
+  }, []);
 
   return (
-    <div>
-      <p className="pb-3 mt-12 font-medium text-zinc-700 border-b">
-        My appointments
-      </p>
-      <div>
-        {appointments.map((item, index) => (
-          <div
-            key={index}
-            className="grid grid-cols-[1fr_2fr] gap-4 sm:flex sm:gap-6 py-2 border-b"
-          >
-            <div>
-              <img
-                className="w-32 bg-indigo-50"
-                src={item.docData.image}
-                alt=""
-              />
-            </div>
-            <div className="flex-1 text-sm text-zinc-600">
-              <p className="text-neutral-800 font-semibold">
-                {item.docData.name}
+
+    <div className="min-h-screen bg-gray-100 px-4 py-8">
+
+      <div className="mx-auto max-w-5xl rounded-3xl bg-white p-8 shadow-sm">
+
+        <h1 className="mb-8 text-3xl font-bold">
+          My Appointments
+        </h1>
+
+        <div className="space-y-5">
+
+          {
+            appointments
+              .filter(
+                (item) => !item.cancelled
+              )
+              .length > 0 ? (
+
+              appointments
+                .filter(
+                  (item) => !item.cancelled
+                )
+                .map((item) => (
+
+                  <div
+                    key={item._id}
+                    className="flex flex-col gap-4 rounded-2xl border bg-gray-50 p-5 md:flex-row md:items-center md:justify-between"
+                  >
+
+                    <div>
+
+                      <h2 className="text-xl font-bold">
+                        Dr. {
+                          item.docData?.name
+                        }
+                      </h2>
+
+                      <p className="text-gray-500">
+                        {
+                          item.docData
+                            ?.speciality
+                        }
+                      </p>
+
+                      <p className="mt-2 text-sm text-gray-400">
+                        {
+                          item.slotDate
+                        }{" "}
+                        • {
+                          item.slotTime
+                        }
+                      </p>
+
+                    </div>
+
+                    <div className="flex gap-3">
+
+                      <button
+                        className="rounded-xl bg-green-500 px-4 py-2 text-sm text-white"
+                      >
+                        Upcoming
+                      </button>
+
+                      <button
+  onClick={() =>
+    cancelAppointment(
+      item._id
+    )
+  }
+  className="cursor-pointer rounded-xl bg-red-500 px-4 py-2 text-sm text-white transition-all duration-200 hover:scale-105 hover:bg-red-600 active:scale-95"
+>
+  Cancel
+</button>
+
+                    </div>
+
+                  </div>
+
+                ))
+
+            ) : (
+
+              <p>
+                No appointments found
               </p>
-              <p>{item.docData.speciality}</p>
-              <p className="text-zinc-700 font-medium mt-1">Address:</p>
-              <p className="text-xs">{item.docData.address.line1}</p>
-              <p className="text-xs">{item.docData.address.line2}</p>
-              <p className="text-xs mt-1">
-                <span>DATE & TIME :</span>{" "}
-                {slotDateFormat(item.slotDate)} | {item.slotTime}
-              </p>
-            </div>
-            <div></div>
-            <div className="flex flex-col gap-2 justify-end">
-              {!item.cancelled && item.isCompleted && (
-                <div className="text-green-600 font-semibold py-2 border border-green-500 rounded text-center">
-                  Payment Done
-                </div>
-              )}
-              {!item.cancelled && !item.isCompleted && (
-                <button
-                  onClick={() => appointmentPhonepe(item._id)}
-                  className="text-sm text-stone-500 text-center sm:min-w-48 py-2 border hover:bg-primary hover:text-white transition-all duration-300"
-                >
-                  Pay Online
-                </button>
-              )}
-              {!item.cancelled && (
-                <button
-                  onClick={() => cancelAppointment(item._id)}
-                  className="text-sm text-stone-500 text-center sm:min-w-48 py-2 border hover:bg-red-600 hover:text-white transition-all duration-300"
-                >
-                  Cancel appointment
-                </button>
-              )}
-              {item.cancelled && (
-                <button className="sm:min-w-48 py-2 border border-red-500 rounded text-red-500">
-                  Appointment Cancelled
-                </button>
-              )}
-            </div>
-          </div>
-        ))}
+
+            )
+          }
+
+        </div>
+
       </div>
+
     </div>
+
   );
+
 };
 
 export default MyAppointments;

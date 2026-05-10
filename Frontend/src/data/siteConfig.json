@@ -1,0 +1,92 @@
+{
+  "siteConfig": {
+    "name": "VitaCare",
+    "foundedYear": 2010,
+    "contact": {
+      "phone": "+1 (234) 567-890"
+    }
+  },
+  "siteImages": {
+    "aboutHero": "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&h=600&fit=crop",
+    "missionImage": "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&h=600&fit=crop"
+  },
+  "siteStats": [
+    { "value": "50,000+", "label": "Patients Served", "icon": "Users" },
+    { "value": "200+", "label": "Expert Doctors", "icon": "Award" },
+    { "value": "15+", "label": "Years of Excellence", "icon": "Clock" },
+    { "value": "98%", "label": "Patient Satisfaction", "icon": "Target" }
+  ],
+  "coreValues": [
+    {
+      "title": "Patient-Centered Care",
+      "description": "Every decision we make is guided by what is best for our patients. Your health and comfort are our top priorities.",
+      "icon": "Heart"
+    },
+    {
+      "title": "Trust & Safety",
+      "description": "We maintain the highest standards of medical practice and ensure a safe, secure environment for all patients.",
+      "icon": "Shield"
+    },
+    {
+      "title": "Innovation",
+      "description": "We continuously adopt the latest medical technologies and treatments to provide cutting-edge healthcare solutions.",
+      "icon": "Lightbulb"
+    },
+    {
+      "title": "Compassion",
+      "description": "We treat every patient with empathy, understanding, and respect, creating a supportive healing environment.",
+      "icon": "Handshake"
+    }
+  ],
+  "leadershipTeam": [
+    {
+      "name": "Dr. Richard Anderson",
+      "role": "Chief Medical Officer",
+      "image": "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&h=400&fit=crop&crop=face"
+    },
+    {
+      "name": "Dr. Patricia Hughes",
+      "role": "Medical Director",
+      "image": "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&h=400&fit=crop&crop=face"
+    },
+    {
+      "name": "Dr. William Foster",
+      "role": "Head of Surgery",
+      "image": "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&h=400&fit=crop&crop=face"
+    },
+    {
+      "name": "Dr. Elizabeth Chen",
+      "role": "Head of Pediatrics",
+      "image": "https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=400&h=400&fit=crop&crop=face"
+    }
+  ],
+  "contactInfo": [
+    {
+      "title": "Visit Us",
+      "icon": "MapPin",
+      "details": ["123 Medical Center Drive", "Healthcare City, HC 12345"]
+    },
+    {
+      "title": "Call Us",
+      "icon": "Phone",
+      "details": ["+1 (234) 567-890", "+1 (234) 567-891"]
+    },
+    {
+      "title": "Email Us",
+      "icon": "Mail",
+      "details": ["contact@vitacare.com", "support@vitacare.com"]
+    },
+    {
+      "title": "Working Hours",
+      "icon": "Clock",
+      "details": ["Mon - Sat: 8:00 AM - 8:00 PM", "Sunday: 9:00 AM - 5:00 PM"]
+    }
+  ],
+  "contactSubjects": [
+    { "value": "appointment", "label": "Appointment Inquiry" },
+    { "value": "general", "label": "General Inquiry" },
+    { "value": "billing", "label": "Billing Question" },
+    { "value": "feedback", "label": "Feedback" },
+    { "value": "other", "label": "Other" }
+  ]
+}

@@ -1,5 +1,17 @@
 import express from 'express'
-import { getProfile, loginUser, registerUser, updateProfile, bookAppointment, listAppointment, cancelAppointment, PaymentPhonepe, paymentCallback } from '../controllers/userController.js'
+import {
+  getProfile,
+  loginUser,
+  registerUser,
+  updateProfile,
+  bookAppointment,
+  listAppointment,
+  cancelAppointment,
+  razorpayPayment,
+  paymentCallback,
+  predictDepartment,
+  createEmergencyAppointment
+} from '../controllers/userController.js'
 import authUser from '../middleware/authUser.js'
 import upload from '../middleware/multer.js'
 
@@ -12,8 +24,17 @@ userRouter.post('/update-profile', upload.single('image'), authUser, updateProfi
 userRouter.post('/book-appointment', authUser, bookAppointment)
 userRouter.get('/appointments', authUser, listAppointment)
 userRouter.post('/cancel-appointment', authUser, cancelAppointment)
-userRouter.post('/payment-phonepe', authUser, PaymentPhonepe)
+userRouter.post(
+  "/razorpay-payment",
+  authUser,
+  razorpayPayment
+)
 userRouter.post('/payment-callback', paymentCallback)
-
+userRouter.post('/predict-department', predictDepartment)
+userRouter.post(
+  '/create-emergency-appointment',
+  authUser,
+  createEmergencyAppointment
+)
 
 export default userRouter
