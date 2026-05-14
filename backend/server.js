@@ -16,7 +16,12 @@ connectCloudinary();
 
 // Middlewares
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://vita-care1.vercel.app",
+    credentials: true,
+  })
+)
 
 // API endpoints
 app.use('/api', assisstantRouter);
