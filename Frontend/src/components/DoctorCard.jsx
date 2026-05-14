@@ -37,7 +37,7 @@ export default function DoctorCard({ doctor }) {
         <div className="mb-3 flex items-center gap-4 text-sm text-gray-600">
           <div className="flex items-center gap-1">
             <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-            <span className="font-medium text-black">{doctor.rating || 4.5}</span>
+            <span className="font-medium text-black">{doctor.rating }</span>
             <span>({doctor.reviews || 0})</span>
           </div>
 

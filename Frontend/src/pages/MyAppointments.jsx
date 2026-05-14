@@ -10,7 +10,8 @@ import { toast } from "react-toastify";
 const MyAppointments = () => {
 
   const backendUrl =
-    "http://localhost:5000";
+    import.meta.env
+    .VITE_BACKEND_URL;
 
   const [appointments, setAppointments] =
     useState([]);
@@ -164,11 +165,33 @@ const MyAppointments = () => {
 
                     <div className="flex gap-3">
 
-                      <button
-                        className="rounded-xl bg-green-500 px-4 py-2 text-sm text-white"
-                      >
-                        Upcoming
-                      </button>
+                      {
+  item.cancelled ? (
+
+    <button
+      className="rounded-xl bg-red-500 px-4 py-2 text-xs font-medium text-white"
+    >
+      Cancelled
+    </button>
+
+  ) : item.isCompleted ? (
+
+    <button
+      className="rounded-xl bg-blue-500 px-4 py-2 text-xs font-medium text-white"
+    >
+      Completed
+    </button>
+
+  ) : (
+
+    <button
+      className="rounded-xl bg-green-500 px-4 py-2 text-xs font-medium text-white"
+    >
+      Upcoming
+    </button>
+
+  )
+}
 
                       <button
   onClick={() =>

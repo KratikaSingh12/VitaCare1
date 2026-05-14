@@ -42,7 +42,7 @@ const AppContextProvider = (props) => {
       if (!backendUrl) return;
 
       const storedToken = localStorage.getItem("token");
-      console.log(storedToken);
+      
 
       if (!storedToken) {
   console.log("Token missing ❌");
@@ -51,9 +51,10 @@ const AppContextProvider = (props) => {
 
 // Firebase token skip
 if (storedToken.length > 500) {
-  console.log("Firebase Google token detected ✅");
+  
   return;
 }
+      
 
       const { data } = await axios.get(
         backendUrl + "/api/user/get-profile",

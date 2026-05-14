@@ -10,7 +10,8 @@ import {
   razorpayPayment,
   paymentCallback,
   predictDepartment,
-  createEmergencyAppointment
+  createEmergencyAppointment,
+  completeAppointment
 } from '../controllers/userController.js'
 import authUser from '../middleware/authUser.js'
 import upload from '../middleware/multer.js'
@@ -36,5 +37,10 @@ userRouter.post(
   authUser,
   createEmergencyAppointment
 )
+userRouter.post(
+  "/complete-appointment",
+  authUser,
+  completeAppointment
+);
 
 export default userRouter

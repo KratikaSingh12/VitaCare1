@@ -16,7 +16,8 @@ const AdminContextProvider = (
 
   // BACKEND URL
   const backendUrl =
-    "http://localhost:5000";
+    import.meta.env
+    .VITE_BACKEND_URL;
 
   // ADMIN TOKEN
   const [aToken, setAToken] =
@@ -135,6 +136,46 @@ const AdminContextProvider = (
       }
 
     };
+    const completeAppointment = async (
+  appointmentId
+) => {
+
+  try {
+
+    const { data } =
+      await axios.post(
+
+        `${backendUrl}/api/admin/complete-appointment`,
+
+        { appointmentId },
+
+        {
+          headers: {
+            aToken,
+          },
+        }
+
+      );
+
+    if (data.success) {
+
+      toast.success(
+        "Appointment Completed"
+      );
+
+      getAllAppointments();
+
+    }
+
+  } catch (error) {
+
+    console.log(error);
+
+    toast.error(error.message);
+
+  }
+
+};
 
   // GET APPOINTMENTS
   const getAllAppointments =
@@ -159,9 +200,8 @@ const AdminContextProvider = (
         if (data.success) {
 
           setAppointments(
-            data.appointments.reverse()
-          );
-
+  [...data.appointments].reverse()
+);
         } else {
 
           toast.error(
@@ -294,6 +334,8 @@ const AdminContextProvider = (
     getAllAppointments,
 
     cancelAppointment,
+
+    completeAppointment,
 
     dashData,
     getDashData,

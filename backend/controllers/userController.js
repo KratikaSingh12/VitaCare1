@@ -15,7 +15,7 @@ dotenv.config();
 const registerUser = async (req, res) => {
   try {
     
-    const { name, email, password } = req.body;
+    const { name, email, password,phone } = req.body;
 
     if (!name || !password || !email) {
       return res.json({ success: false, message: "Missing Details" });
@@ -37,7 +37,7 @@ const registerUser = async (req, res) => {
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
-    const userData = {
+    const userData = {userId,
       name,
       email,
       password: hashedPassword,
@@ -54,6 +54,35 @@ const registerUser = async (req, res) => {
   } catch (error) {
     console.log(error);
     return res.json({ success: false, message: error.message });
+  }
+};
+
+const completeAppointment = async (req, res) => {
+
+  try {
+
+    const { appointmentId } = req.body;
+
+    await appointmentModel.findByIdAndUpdate(
+      appointmentId,
+      {
+        isCompleted: true,
+      }
+    );
+
+    res.json({
+      success: true,
+      message: "Appointment Completed",
+    });
+
+  } catch (error) {
+
+    console.log(error);
+
+    res.json({
+      success: false,
+      message: error.message,
+    });
   }
 };
 
@@ -531,7 +560,7 @@ const createEmergencyAppointment = async (req, res) => {
 
       success: true,
 
-      appointmentId: newAppointment._id,
+      appointment: newAppointment,
 
       totalAmount,
 
@@ -563,4 +592,5 @@ export {
   paymentCallback,
   predictDepartment,
   createEmergencyAppointment,
+  completeAppointment,
 };

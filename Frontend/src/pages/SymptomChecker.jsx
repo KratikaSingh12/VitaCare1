@@ -90,7 +90,7 @@ export default function SymptomChecker() {
       setLoading(true);
 
       const res = await axios.post(
-        "http://localhost:5000/api/user/predict-department",
+          `${import.meta.env.VITE_BACKEND_URL}/api/user/predict-department`,
         {
           symptom: symptoms,
         }

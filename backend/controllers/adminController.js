@@ -74,7 +74,13 @@ const appointmentCancel = async (req, res) => {
     try {
 
         const { appointmentId } = req.body
-        await appointmentModel.findByIdAndUpdate(appointmentId, { cancelled: true })
+        await appointmentModel.findByIdAndUpdate(
+  appointmentId,
+  {
+    cancelled: true,
+    isCompleted: false,
+  }
+);
 
         res.json({ success: true, message: 'Appointment Cancelled' })
 
@@ -182,6 +188,37 @@ const getSingleDoctor =
     }
 
 };
+const completeAppointment = async (req, res) => {
+
+  try {
+
+    const { appointmentId } = req.body;
+
+    await appointmentModel.findByIdAndUpdate(
+  appointmentId,
+  {
+    isCompleted: true,
+    cancelled: false,
+  }
+);
+
+    res.json({
+      success: true,
+      message: "Appointment Completed",
+    });
+
+  } catch (error) {
+
+    console.log(error);
+
+    res.json({
+      success: false,
+      message: error.message,
+    });
+
+  }
+
+};
 
 // REMOVE DOCTOR
 const removeDoctor =
@@ -244,5 +281,6 @@ export {
     adminDashboard,
     getAllPatients,
     getSingleDoctor,
-removeDoctor
+removeDoctor,
+completeAppointment
 }

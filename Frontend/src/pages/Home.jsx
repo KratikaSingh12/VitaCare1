@@ -199,9 +199,10 @@ export default function HomePage() {
             {featuredSpecialties.map((specialty) => {
               const count = doctors.filter(
                 (d) =>
-                  String(d.specialization).toLowerCase() ===
+                  String(d.speciality).toLowerCase() ===
                   String(specialty.name).toLowerCase()
               ).length;
+              console.log(doctors[0])
 
               return (
                 <SpecialtyCard
@@ -223,33 +224,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Featured Doctors Section */}
-      <section className="py-16 md:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-12 flex flex-col items-center justify-between gap-4 sm:flex-row">
-            <div>
-              <h2 className="mb-2 text-3xl font-bold text-foreground md:text-4xl">
-                Meet Our Top Doctors
-              </h2>
-              <p className="text-muted-foreground">
-                Highly rated specialists ready to help you
-              </p>
-            </div>
-
-            <Link to="/doctors" className="inline-flex">
-              <button className="inline-flex items-center gap-2 rounded-md border px-4 py-2 cursor-pointer" >
-                View All Doctors <ArrowRight className="h-4 w-4" />
-              </button>
-            </Link>
-          </div>
-
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {featuredDoctors.map((doctor) => (
-              <DoctorCard key={doctor._id} doctor={doctor} />
-            ))}
-          </div>
-        </div>
-      </section>
+      
 
       {/* Why Choose Us Section */}
       <section className="bg-secondary/30 py-16 md:py-24">

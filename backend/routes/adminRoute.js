@@ -1,6 +1,6 @@
 import express from 'express';
 import { loginAdmin, appointmentsAdmin, appointmentCancel, addDoctor, allDoctors, adminDashboard,getAllPatients ,getSingleDoctor,
-  removeDoctor} from '../controllers/adminController.js';
+  removeDoctor,completeAppointment} from '../controllers/adminController.js';
 import { changeAvailablity } from '../controllers/doctorController.js';
 import authAdmin from '../middleware/authAdmin.js';
 import upload from '../middleware/multer.js';
@@ -25,5 +25,10 @@ adminRouter.delete(
   "/remove-doctor/:docId",
   authAdmin,
   removeDoctor
+);
+adminRouter.post(
+  "/complete-appointment",
+  authAdmin,
+  completeAppointment
 );
 export default adminRouter;

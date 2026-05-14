@@ -45,7 +45,7 @@ export default function Login() {
   const [terms, setTerms] = useState(false);
 
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const { setToken, setUserData } = useContext(AppContext);
+  const { setToken, setUserData, loadUserProfileData } = useContext(AppContext);
 
   // ================= LOGIN =================
 
@@ -56,7 +56,8 @@ export default function Login() {
     try {
 
       const { data } = await axios.post(
-        "http://localhost:5000/api/user/login",
+        import.meta.env
+    .VITE_BACKEND_URL,
         {
           email: loginData.email,
           password: loginData.password,
@@ -116,7 +117,7 @@ export default function Login() {
     try {
 
       const { data } = await axios.post(
-        "http://localhost:5000/api/user/register",
+      `${import.meta.env.VITE_BACKEND_URL}/api/user/register`,
         {
           name: registerData.name,
           email: registerData.email,
@@ -129,9 +130,13 @@ export default function Login() {
 
         localStorage.setItem("token", data.token);
 
-        toast.success("Registration Successful");
+setToken(data.token);
 
-        navigate("/");
+await loadUserProfileData();
+
+toast.success("Registration Successful");
+
+navigate("/");
 
       } else {
 

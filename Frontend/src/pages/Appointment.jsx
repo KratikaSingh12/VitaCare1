@@ -22,7 +22,8 @@ const Appointment = () => {
 
   const navigate = useNavigate();
 
-  const backendUrl = "http://localhost:5000";
+  const backendUrl = import.meta.env
+    .VITE_BACKEND_URL;
 
   const { doctors,userData, } = useContext(AppContext);
 

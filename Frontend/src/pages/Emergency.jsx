@@ -29,7 +29,8 @@ import { toast } from "react-toastify";
 
 export default function Emergency() {
 
-  const backendUrl = "http://localhost:5000";
+  const backendUrl = import.meta.env
+    .VITE_BACKEND_URL;
 
   const navigate = useNavigate();
 
@@ -37,9 +38,12 @@ export default function Emergency() {
     useContext(AppContext);
 
   const meetingRef = useRef(null);
+  const hasJoined = useRef(false);
 
   const [step, setStep] =
     useState("form");
+  const [appointmentId, setAppointmentId] =
+  useState("");
 
   const [formData, setFormData] =
     useState({
@@ -80,8 +84,15 @@ export default function Emergency() {
   // ZEGO VIDEO CALL
   useEffect(() => {
 
-    if (step !== "call")
-      return;
+    if (
+   step !== "call" ||
+   !appointmentId
+)
+   return;
+    if (hasJoined.current)
+  return;
+
+hasJoined.current = true;
 
     const timer =
       setTimeout(() => {
@@ -109,11 +120,13 @@ export default function Emergency() {
           ZegoUIKitPrebuilt.create(
             kitToken
           );
+          
 
         zp.joinRoom({
 
           container:
             meetingRef.current,
+            
 
           sharedLinks: [
             {
@@ -125,6 +138,7 @@ export default function Emergency() {
           scenario: {
             mode:
               ZegoUIKitPrebuilt.OneONoneCall,
+              showLeavingView: true,
           },
 
           turnOnMicrophoneWhenJoining:
@@ -138,13 +152,37 @@ export default function Emergency() {
 
           showTextChat: true,
 
-          onLeaveRoom: () => {
+          onLeaveRoom: async () => {
 
-            toast.success(
-              "Thank you for connecting with VitaCare ❤️"
-            );
+   try {
 
-          },
+      const token = localStorage.getItem("token");
+
+      await axios.post(
+         backendUrl + "/api/user/complete-appointment",
+         {
+            appointmentId:
+               appointmentId,
+         },
+         {
+            headers: {
+               Authorization: `Bearer ${token}`,
+            },
+         }
+      );
+
+      
+
+      // navigate("/patient-profile");
+
+   } catch (error) {
+
+      console.log(error);
+
+   }
+   hasJoined.current = false;
+
+},
 
         });
 
@@ -153,7 +191,8 @@ export default function Emergency() {
     return () =>
       clearTimeout(timer);
 
-  }, [step]);
+  }, [step ,appointmentId]);
+
 
   // FORM SUBMIT
   const handleSubmit =
@@ -206,20 +245,27 @@ export default function Emergency() {
             }
 
           );
+          console.log(appointmentRes.data)
 
         if (
-          !appointmentRes.data
-            .success
-        ) {
+  !appointmentRes.data.success
+) {
 
-          toast.error(
-            appointmentRes.data
-              .message
-          );
+  toast.error(
+    appointmentRes.data.message
+  );
 
-          return;
+  return;
+}
 
-        }
+setAppointmentId(
+  appointmentRes.data.appointment?._id
+);
+
+// console.log(
+//   appointmentRes.data.appointment?._id
+// );
+        
 
         // RAZORPAY ORDER
 
