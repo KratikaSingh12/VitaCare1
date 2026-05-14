@@ -42,7 +42,7 @@ const registerUser = async (req, res) => {
       email,
       password: hashedPassword,
     };
-
+//a
     const newUser = new userModel(userData);
     const user = await newUser.save();
 
