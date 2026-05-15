@@ -65,9 +65,13 @@ export default function Login() {
 
       if (data.success) {
 
-        localStorage.setItem("token", data.token);
+  localStorage.setItem("token", data.token);
 
-        setIsSubmitted(true);
+  setToken(data.token); // ADD THIS
+
+  await loadUserProfileData(); // ADD THIS
+
+  setIsSubmitted(true);
 
         setTimeout(() => {
 
