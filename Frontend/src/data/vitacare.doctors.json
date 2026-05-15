@@ -1,0 +1,1262 @@
+[{
+  "_id": {
+    "$oid": "69760c35e1da0024a673d2de"
+  },
+  "name": "Dr. Rohan Mehta",
+  "email": "gp2@gmail.com",
+  "password": "$2b$10$dummyhashedpassword",
+  "image": "https://randomuser.me/api/portraits/men/32.jpg",
+  "speciality": "General Physician",
+  "degree": "MBBS",
+  "experience": "8 Years",
+  "about": "Primary care for adults, diabetes & BP monitoring.",
+  "fees": 500,
+  "address": {
+    "line1": "Katra",
+    "line2": "Prayagraj"
+  },
+  "date": {
+    "$numberLong": "1730000001002"
+  },
+  "slots_booked": {
+    "2026-05-22": []
+  }
+},
+{
+  "_id": {
+    "$oid": "69760c35e1da0024a673d2df"
+  },
+  "name": "Dr. Neha Singh",
+  "email": "gp3@gmail.com",
+  "password": "$2b$10$dummyhashedpassword",
+  "image": "https://randomuser.me/api/portraits/women/68.jpg",
+  "speciality": "General Physician",
+  "degree": "MBBS",
+  "experience": "5 Years",
+  "about": "Seasonal infections, general consultation, wellness plans.",
+  "fees": 350,
+  "address": {
+    "line1": "Naini",
+    "line2": "Prayagraj"
+  },
+  "date": {
+    "$numberLong": "1730000001003"
+  },
+  "slots_booked": {
+    "2026-05-20": [],
+    "2026-05-30": []
+  }
+},
+{
+  "_id": {
+    "$oid": "69760c35e1da0024a673d2e0"
+  },
+  "name": "Dr. Vikram Joshi",
+  "email": "gp4@gmail.com",
+  "password": "$2b$10$dummyhashedpassword",
+  "image": "https://randomuser.me/api/portraits/men/76.jpg",
+  "speciality": "General Physician",
+  "degree": "MBBS",
+  "experience": "10 Years",
+  "about": "General medicine, routine checkups, preventive care.",
+  "fees": 600,
+  "address": {
+    "line1": "George Town",
+    "line2": "Prayagraj"
+  },
+  "date": {
+    "$numberLong": "1730000001004"
+  }
+},
+{
+  "_id": {
+    "$oid": "69760c35e1da0024a673d2e1"
+  },
+  "name": "Dr. Ananya Gupta",
+  "email": "gyn1@gmail.com",
+  "password": "$2b$10$dummyhashedpassword",
+  "image": "https://randomuser.me/api/portraits/women/12.jpg",
+  "speciality": "Gynecologist",
+  "degree": "MBBS, MS (OBG)",
+  "experience": "9 Years",
+  "about": "Pregnancy care, PCOS, menstrual health.",
+  "fees": 700,
+  "address": {
+    "line1": "Civil Lines",
+    "line2": "Prayagraj"
+  },
+  "date": {
+    "$numberLong": "1730000001101"
+  }
+},
+{
+  "_id": {
+    "$oid": "69760c35e1da0024a673d2e2"
+  },
+  "name": "Dr. Ritu Sharma",
+  "email": "gyn2@gmail.com",
+  "password": "$2b$10$dummyhashedpassword",
+  "image": "https://randomuser.me/api/portraits/women/22.jpg",
+  "speciality": "Gynecologist",
+  "degree": "MBBS, DGO",
+  "experience": "12 Years",
+  "about": "High-risk pregnancy, infertility counselling.",
+  "fees": 800,
+  "address": {
+    "line1": "Katra",
+    "line2": "Prayagraj"
+  },
+  "date": {
+    "$numberLong": "1730000001102"
+  }
+},
+{
+  "_id": {
+    "$oid": "69760c35e1da0024a673d2e3"
+  },
+  "name": "Dr. Meera Nair",
+  "email": "gyn3@gmail.com",
+  "password": "$2b$10$dummyhashedpassword",
+  "image": "https://randomuser.me/api/portraits/women/35.jpg",
+  "speciality": "Gynecologist",
+  "degree": "MBBS, MS (OBG)",
+  "experience": "7 Years",
+  "about": "Women wellness, pregnancy consultation, PCOD.",
+  "fees": 650,
+  "address": {
+    "line1": "Naini",
+    "line2": "Prayagraj"
+  },
+  "date": {
+    "$numberLong": "1730000001103"
+  }
+},
+{
+  "_id": {
+    "$oid": "69760c35e1da0024a673d2e4"
+  },
+  "name": "Dr. Shruti Mishra",
+  "email": "gyn4@gmail.com",
+  "password": "$2b$10$dummyhashedpassword",
+  "image": "https://randomuser.me/api/portraits/women/47.jpg",
+  "speciality": "Gynecologist",
+  "degree": "MBBS, DNB (OBG)",
+  "experience": "10 Years",
+  "about": "Menstrual disorders, contraception, maternity care.",
+  "fees": 750,
+  "address": {
+    "line1": "Bairhana",
+    "line2": "Prayagraj"
+  },
+  "date": {
+    "$numberLong": "1730000001104"
+  }
+},
+{
+  "_id": {
+    "$oid": "69760c35e1da0024a673d2e5"
+  },
+  "name": "Dr. Isha Malhotra",
+  "email": "derm1@gmail.com",
+  "password": "$2b$10$dummyhashedpassword",
+  "image": "https://randomuser.me/api/portraits/women/53.jpg",
+  "speciality": "Dermatologist",
+  "degree": "MBBS, MD (Dermatology)",
+  "experience": "8 Years",
+  "about": "Acne, skin allergies, pigmentation treatment.",
+  "fees": 700,
+  "address": {
+    "line1": "Civil Lines",
+    "line2": "Prayagraj"
+  },
+  "date": {
+    "$numberLong": "1730000001201"
+  }
+},
+{
+  "_id": {
+    "$oid": "69760c35e1da0024a673d2e6"
+  },
+  "name": "Dr. Sarthak Roy",
+  "email": "derm2@gmail.com",
+  "password": "$2b$10$dummyhashedpassword",
+  "image": "https://randomuser.me/api/portraits/men/45.jpg",
+  "speciality": "Dermatologist",
+  "degree": "MBBS, DDVL",
+  "experience": "6 Years",
+  "about": "Hair fall, dandruff, eczema care.",
+  "fees": 600,
+  "address": {
+    "line1": "Katra",
+    "line2": "Prayagraj"
+  },
+  "date": {
+    "$numberLong": "1730000001202"
+  },
+  "slots_booked": {
+    "2026-05-29": []
+  }
+},
+{
+  "_id": {
+    "$oid": "69760c35e1da0024a673d2e7"
+  },
+  "name": "Dr. Priya Desai",
+  "email": "derm3@gmail.com",
+  "password": "$2b$10$dummyhashedpassword",
+  "image": "https://randomuser.me/api/portraits/women/19.jpg",
+  "speciality": "Dermatologist",
+  "degree": "MBBS, MD (Dermatology)",
+  "experience": "10 Years",
+  "about": "Psoriasis, fungal infections, skincare routines.",
+  "fees": 800,
+  "address": {
+    "line1": "Naini",
+    "line2": "Prayagraj"
+  },
+  "date": {
+    "$numberLong": "1730000001203"
+  }
+},
+{
+  "_id": {
+    "$oid": "69760c35e1da0024a673d2e8"
+  },
+  "name": "Dr. Aman Kapoor",
+  "email": "derm4@gmail.com",
+  "password": "$2b$10$dummyhashedpassword",
+  "image": "https://randomuser.me/api/portraits/men/58.jpg",
+  "speciality": "Dermatologist",
+  "degree": "MBBS, DDVL",
+  "experience": "7 Years",
+  "about": "Skin rashes, urticaria, cosmetic dermatology.",
+  "fees": 650,
+  "address": {
+    "line1": "George Town",
+    "line2": "Prayagraj"
+  },
+  "date": {
+    "$numberLong": "1730000001204"
+  }
+},
+{
+  "_id": {
+    "$oid": "69760c35e1da0024a673d2e9"
+  },
+  "name": "Dr. Nisha Khanna",
+  "email": "ped1@gmail.com",
+  "password": "$2b$10$dummyhashedpassword",
+  "image": "https://randomuser.me/api/portraits/women/6.jpg",
+  "speciality": "Pediatrician",
+  "degree": "MBBS, MD (Pediatrics)",
+  "experience": "9 Years",
+  "about": "Child fever, vaccination, nutrition guidance.",
+  "fees": 600,
+  "address": {
+    "line1": "Civil Lines",
+    "line2": "Prayagraj"
+  },
+  "date": {
+    "$numberLong": "1730000001301"
+  }
+},
+{
+  "_id": {
+    "$oid": "69760c35e1da0024a673d2ea"
+  },
+  "name": "Dr. Arjun Yadav",
+  "email": "ped2@gmail.com",
+  "password": "$2b$10$dummyhashedpassword",
+  "image": "https://randomuser.me/api/portraits/men/11.jpg",
+  "speciality": "Pediatrician",
+  "degree": "MBBS, DCH",
+  "experience": "7 Years",
+  "about": "Newborn care, cold/cough, pediatric checkups.",
+  "fees": 550,
+  "address": {
+    "line1": "Katra",
+    "line2": "Prayagraj"
+  },
+  "date": {
+    "$numberLong": "1730000001302"
+  }
+},
+{
+  "_id": {
+    "$oid": "69760c35e1da0024a673d2eb"
+  },
+  "name": "Dr. Simran Kaur",
+  "email": "ped3@gmail.com",
+  "password": "$2b$10$dummyhashedpassword",
+  "image": "https://randomuser.me/api/portraits/women/27.jpg",
+  "speciality": "Pediatrician",
+  "degree": "MBBS, MD (Pediatrics)",
+  "experience": "10 Years",
+  "about": "Growth monitoring, allergies, pediatric wellness.",
+  "fees": 650,
+  "address": {
+    "line1": "Naini",
+    "line2": "Prayagraj"
+  },
+  "date": {
+    "$numberLong": "1730000001303"
+  }
+},
+{
+  "_id": {
+    "$oid": "69760c35e1da0024a673d2ec"
+  },
+  "name": "Dr. Mohit Bansal",
+  "email": "ped4@gmail.com",
+  "password": "$2b$10$dummyhashedpassword",
+  "image": "https://randomuser.me/api/portraits/men/64.jpg",
+  "speciality": "Pediatrician",
+  "degree": "MBBS, DNB (Pediatrics)",
+  "experience": "8 Years",
+  "about": "Vaccination schedule, child infections, asthma care.",
+  "fees": 600,
+  "address": {
+    "line1": "Bairhana",
+    "line2": "Prayagraj"
+  },
+  "date": {
+    "$numberLong": "1730000001304"
+  }
+},
+{
+  "_id": {
+    "$oid": "69760c35e1da0024a673d2ed"
+  },
+  "name": "Dr. Rahul Chatterjee",
+  "email": "neuro1@gmail.com",
+  "password": "$2b$10$dummyhashedpassword",
+  "image": "https://randomuser.me/api/portraits/men/20.jpg",
+  "speciality": "Neurologist",
+  "degree": "MBBS, DM (Neurology)",
+  "experience": "11 Years",
+  "about": "Headache, migraine, nerve disorders, epilepsy care.",
+  "fees": 1000,
+  "address": {
+    "line1": "Civil Lines",
+    "line2": "Prayagraj"
+  },
+  "date": {
+    "$numberLong": "1730000001401"
+  }
+},
+{
+  "_id": {
+    "$oid": "69760c35e1da0024a673d2ee"
+  },
+  "name": "Dr. Swati Menon",
+  "email": "neuro2@gmail.com",
+  "password": "$2b$10$dummyhashedpassword",
+  "image": "https://randomuser.me/api/portraits/women/31.jpg",
+  "speciality": "Neurologist",
+  "degree": "MBBS, DM (Neurology)",
+  "experience": "9 Years",
+  "about": "Stroke follow-up, neuropathy, sleep issues.",
+  "fees": 900,
+  "address": {
+    "line1": "Katra",
+    "line2": "Prayagraj"
+  },
+  "date": {
+    "$numberLong": "1730000001402"
+  }
+},
+{
+  "_id": {
+    "$oid": "69760c35e1da0024a673d2ef"
+  },
+  "name": "Dr. Kunal Sinha",
+  "email": "neuro3@gmail.com",
+  "password": "$2b$10$dummyhashedpassword",
+  "image": "https://randomuser.me/api/portraits/men/53.jpg",
+  "speciality": "Neurologist",
+  "degree": "MBBS, MD, DM (Neurology)",
+  "experience": "12 Years",
+  "about": "Seizures, nerve pain, neurological consultation.",
+  "fees": 1100,
+  "address": {
+    "line1": "Naini",
+    "line2": "Prayagraj"
+  },
+  "date": {
+    "$numberLong": "1730000001403"
+  }
+},
+{
+  "_id": {
+    "$oid": "69760c35e1da0024a673d2f0"
+  },
+  "name": "Dr. Pooja Iyer",
+  "email": "neuro4@gmail.com",
+  "password": "$2b$10$dummyhashedpassword",
+  "image": "https://randomuser.me/api/portraits/women/59.jpg",
+  "speciality": "Neurologist",
+  "degree": "MBBS, DM (Neurology)",
+  "experience": "8 Years",
+  "about": "Migraine, vertigo, nerve disorders care.",
+  "fees": 850,
+  "address": {
+    "line1": "Bairhana",
+    "line2": "Prayagraj"
+  },
+  "date": {
+    "$numberLong": "1730000001404"
+  }
+},
+{
+  "_id": {
+    "$oid": "69760c35e1da0024a673d2f1"
+  },
+  "name": "Dr. Sandeep Arora",
+  "email": "gastro1@gmail.com",
+  "password": "$2b$10$dummyhashedpassword",
+  "image": "https://randomuser.me/api/portraits/men/39.jpg",
+  "speciality": "Gastroenterologist",
+  "degree": "MBBS, DM (Gastro)",
+  "experience": "10 Years",
+  "about": "Acidity, IBS, liver issues, digestion care.",
+  "fees": 950,
+  "address": {
+    "line1": "Civil Lines",
+    "line2": "Prayagraj"
+  },
+  "date": {
+    "$numberLong": "1730000001501"
+  }
+},
+{
+  "_id": {
+    "$oid": "69760c35e1da0024a673d2f2"
+  },
+  "name": "Dr. Riya Sen",
+  "email": "gastro2@gmail.com",
+  "password": "$2b$10$dummyhashedpassword",
+  "image": "https://randomuser.me/api/portraits/women/40.jpg",
+  "speciality": "Gastroenterologist",
+  "degree": "MBBS, MD, DM (Gastro)",
+  "experience": "8 Years",
+  "about": "Stomach pain, ulcers, fatty liver guidance.",
+  "fees": 900,
+  "address": {
+    "line1": "Katra",
+    "line2": "Prayagraj"
+  },
+  "date": {
+    "$numberLong": "1730000001502"
+  }
+},
+{
+  "_id": {
+    "$oid": "69760c35e1da0024a673d2f3"
+  },
+  "name": "Dr. Ajay Tiwari",
+  "email": "gastro3@gmail.com",
+  "password": "$2b$10$dummyhashedpassword",
+  "image": "https://randomuser.me/api/portraits/men/71.jpg",
+  "speciality": "Gastroenterologist",
+  "degree": "MBBS, DM (Gastro)",
+  "experience": "12 Years",
+  "about": "Gastritis, GERD, bowel disorders care.",
+  "fees": 1000,
+  "address": {
+    "line1": "Naini",
+    "line2": "Prayagraj"
+  },
+  "date": {
+    "$numberLong": "1730000001503"
+  }
+},
+{
+  "_id": {
+    "$oid": "69760c35e1da0024a673d2f4"
+  },
+  "name": "Dr. Shreya Kulkarni",
+  "email": "gastro4@gmail.com",
+  "password": "$2b$10$dummyhashedpassword",
+  "image": "https://randomuser.me/api/portraits/women/74.jpg",
+  "speciality": "Gastroenterologist",
+  "degree": "MBBS, MD, DM (Gastro)",
+  "experience": "7 Years",
+  "about": "Constipation, acidity, digestive health.",
+  "fees": 850,
+  "address": {
+    "line1": "Bairhana",
+    "line2": "Prayagraj"
+  },
+  "date": {
+    "$numberLong": "1730000001504"
+  }
+},
+{
+  "_id": {
+    "$oid": "69760c35e1da0024a673d2f5"
+  },
+  "name": "Dr. Harsh Vardhan",
+  "email": "cardio1@gmail.com",
+  "password": "$2b$10$dummyhashedpassword",
+  "image": "https://randomuser.me/api/portraits/men/14.jpg",
+  "speciality": "Cardiologist",
+  "degree": "MBBS, DM (Cardiology)",
+  "experience": "13 Years",
+  "about": "Heart checkups, BP, ECG consultation.",
+  "fees": 1200,
+  "address": {
+    "line1": "Civil Lines",
+    "line2": "Prayagraj"
+  },
+  "date": {
+    "$numberLong": "1730000001601"
+  },
+  "slots_booked": {
+    "2026-05-16": []
+  }
+},
+{
+  "_id": {
+    "$oid": "69760c35e1da0024a673d2f6"
+  },
+  "name": "Dr. Nandini Rao",
+  "email": "cardio2@gmail.com",
+  "password": "$2b$10$dummyhashedpassword",
+  "image": "https://randomuser.me/api/portraits/women/16.jpg",
+  "speciality": "Cardiologist",
+  "degree": "MBBS, MD, DM (Cardiology)",
+  "experience": "10 Years",
+  "about": "Chest pain, hypertension, heart risk assessment.",
+  "fees": 1100,
+  "address": {
+    "line1": "Katra",
+    "line2": "Prayagraj"
+  },
+  "date": {
+    "$numberLong": "1730000001602"
+  }
+},
+{
+  "_id": {
+    "$oid": "69760c35e1da0024a673d2f7"
+  },
+  "name": "Dr. Manish Kapoor",
+  "email": "cardio3@gmail.com",
+  "password": "$2b$10$dummyhashedpassword",
+  "image": "https://randomuser.me/api/portraits/men/49.jpg",
+  "speciality": "Cardiologist",
+  "degree": "MBBS, DM (Cardiology)",
+  "experience": "12 Years",
+  "about": "Cardiac wellness, cholesterol & heart health.",
+  "fees": 1250,
+  "address": {
+    "line1": "Naini",
+    "line2": "Prayagraj"
+  },
+  "date": {
+    "$numberLong": "1730000001603"
+  }
+},
+{
+  "_id": {
+    "$oid": "69760c35e1da0024a673d2f8"
+  },
+  "name": "Dr. Sneha Patil",
+  "email": "cardio4@gmail.com",
+  "password": "$2b$10$dummyhashedpassword",
+  "image": "https://randomuser.me/api/portraits/women/52.jpg",
+  "speciality": "Cardiologist",
+  "degree": "MBBS, MD, DM (Cardiology)",
+  "experience": "9 Years",
+  "about": "Heart screening, ECG/ECHO guidance, lifestyle care.",
+  "fees": 1000,
+  "address": {
+    "line1": "Bairhana",
+    "line2": "Prayagraj"
+  },
+  "date": {
+    "$numberLong": "1730000001604"
+  }
+},
+{
+  "_id": {
+    "$oid": "69760c35e1da0024a673d2f9"
+  },
+  "name": "Dr. Sameer Tripathi",
+  "email": "ortho1@gmail.com",
+  "password": "$2b$10$dummyhashedpassword",
+  "image": "https://randomuser.me/api/portraits/men/24.jpg",
+  "speciality": "Orthopedic",
+  "degree": "MBBS, MS (Ortho)",
+  "experience": "11 Years",
+  "about": "Joint pain, back pain, fracture care.",
+  "fees": 900,
+  "address": {
+    "line1": "Civil Lines",
+    "line2": "Prayagraj"
+  },
+  "date": {
+    "$numberLong": "1730000001701"
+  }
+},
+{
+  "_id": {
+    "$oid": "69760c35e1da0024a673d2fa"
+  },
+  "name": "Dr. Priyanka Soni",
+  "email": "ortho2@gmail.com",
+  "password": "$2b$10$dummyhashedpassword",
+  "image": "https://randomuser.me/api/portraits/women/62.jpg",
+  "speciality": "Orthopedic",
+  "degree": "MBBS, DNB (Ortho)",
+  "experience": "8 Years",
+  "about": "Knee pain, arthritis, sports injury.",
+  "fees": 850,
+  "address": {
+    "line1": "Katra",
+    "line2": "Prayagraj"
+  },
+  "date": {
+    "$numberLong": "1730000001702"
+  }
+},
+{
+  "_id": {
+    "$oid": "69760c35e1da0024a673d2fb"
+  },
+  "name": "Dr. Abhishek Pandey",
+  "email": "ortho3@gmail.com",
+  "password": "$2b$10$dummyhashedpassword",
+  "image": "https://randomuser.me/api/portraits/men/67.jpg",
+  "speciality": "Orthopedic",
+  "degree": "MBBS, MS (Ortho)",
+  "experience": "10 Years",
+  "about": "Spine care, fracture management, rehab guidance.",
+  "fees": 950,
+  "address": {
+    "line1": "Naini",
+    "line2": "Prayagraj"
+  },
+  "date": {
+    "$numberLong": "1730000001703"
+  }
+},
+{
+  "_id": {
+    "$oid": "69760c35e1da0024a673d2fc"
+  },
+  "name": "Dr. Mehak Arora",
+  "email": "ortho4@gmail.com",
+  "password": "$2b$10$dummyhashedpassword",
+  "image": "https://randomuser.me/api/portraits/women/9.jpg",
+  "speciality": "Orthopedic",
+  "degree": "MBBS, MS (Ortho)",
+  "experience": "7 Years",
+  "about": "Bone health, osteoporosis, joint pain treatment.",
+  "fees": 800,
+  "address": {
+    "line1": "Bairhana",
+    "line2": "Prayagraj"
+  },
+  "date": {
+    "$numberLong": "1730000001704"
+  }
+},
+{
+  "_id": {
+    "$oid": "69760c35e1da0024a673d2fd"
+  },
+  "name": "Dr. Rajat Saxena",
+  "email": "ent1@gmail.com",
+  "password": "$2b$10$dummyhashedpassword",
+  "image": "https://randomuser.me/api/portraits/men/10.jpg",
+  "speciality": "ENT",
+  "degree": "MBBS, MS (ENT)",
+  "experience": "9 Years",
+  "about": "Ear pain, sinus, throat infection treatment.",
+  "fees": 650,
+  "address": {
+    "line1": "Civil Lines",
+    "line2": "Prayagraj"
+  },
+  "date": {
+    "$numberLong": "1730000001801"
+  }
+},
+{
+  "_id": {
+    "$oid": "69760c35e1da0024a673d2fe"
+  },
+  "name": "Dr. Shalini Gupta",
+  "email": "ent2@gmail.com",
+  "password": "$2b$10$dummyhashedpassword",
+  "image": "https://randomuser.me/api/portraits/women/29.jpg",
+  "speciality": "ENT",
+  "degree": "MBBS, DLO",
+  "experience": "7 Years",
+  "about": "Allergy, tonsillitis, sinusitis care.",
+  "fees": 600,
+  "address": {
+    "line1": "Katra",
+    "line2": "Prayagraj"
+  },
+  "date": {
+    "$numberLong": "1730000001802"
+  }
+},
+{
+  "_id": {
+    "$oid": "69760c35e1da0024a673d2ff"
+  },
+  "name": "Dr. Keshav Mishra",
+  "email": "ent3@gmail.com",
+  "password": "$2b$10$dummyhashedpassword",
+  "image": "https://randomuser.me/api/portraits/men/41.jpg",
+  "speciality": "ENT",
+  "degree": "MBBS, MS (ENT)",
+  "experience": "10 Years",
+  "about": "Hearing issues, vertigo, nasal blockage treatment.",
+  "fees": 700,
+  "address": {
+    "line1": "Naini",
+    "line2": "Prayagraj"
+  },
+  "date": {
+    "$numberLong": "1730000001803"
+  }
+},
+{
+  "_id": {
+    "$oid": "69760c35e1da0024a673d300"
+  },
+  "name": "Dr. Radhika Nanda",
+  "email": "ent4@gmail.com",
+  "password": "$2b$10$dummyhashedpassword",
+  "image": "https://randomuser.me/api/portraits/women/57.jpg",
+  "speciality": "ENT",
+  "degree": "MBBS, MS (ENT)",
+  "experience": "8 Years",
+  "about": "Sinus, throat pain, ear infections treatment.",
+  "fees": 650,
+  "address": {
+    "line1": "Bairhana",
+    "line2": "Prayagraj"
+  },
+  "date": {
+    "$numberLong": "1730000001804"
+  }
+},
+{
+  "_id": {
+    "$oid": "69760c35e1da0024a673d301"
+  },
+  "name": "Dr. Deepak Malviya",
+  "email": "oph1@gmail.com",
+  "password": "$2b$10$dummyhashedpassword",
+  "image": "https://randomuser.me/api/portraits/men/5.jpg",
+  "speciality": "Ophthalmologist",
+  "degree": "MBBS, MS (Ophthalmology)",
+  "experience": "12 Years",
+  "about": "Eye checkups, cataract, vision correction guidance.",
+  "fees": 800,
+  "address": {
+    "line1": "Civil Lines",
+    "line2": "Prayagraj"
+  },
+  "date": {
+    "$numberLong": "1730000001901"
+  }
+},
+{
+  "_id": {
+    "$oid": "69760c35e1da0024a673d302"
+  },
+  "name": "Dr. Komal Shah",
+  "email": "oph2@gmail.com",
+  "password": "$2b$10$dummyhashedpassword",
+  "image": "https://randomuser.me/api/portraits/women/33.jpg",
+  "speciality": "Ophthalmologist",
+  "degree": "MBBS, DO",
+  "experience": "9 Years",
+  "about": "Dry eyes, glasses prescription, eye infections.",
+  "fees": 700,
+  "address": {
+    "line1": "Katra",
+    "line2": "Prayagraj"
+  },
+  "date": {
+    "$numberLong": "1730000001902"
+  }
+},
+{
+  "_id": {
+    "$oid": "69760c35e1da0024a673d303"
+  },
+  "name": "Dr. Nikhil Bhatia",
+  "email": "oph3@gmail.com",
+  "password": "$2b$10$dummyhashedpassword",
+  "image": "https://randomuser.me/api/portraits/men/50.jpg",
+  "speciality": "Ophthalmologist",
+  "degree": "MBBS, MS (Ophthalmology)",
+  "experience": "10 Years",
+  "about": "Eye pain, redness, vision screening.",
+  "fees": 750,
+  "address": {
+    "line1": "Naini",
+    "line2": "Prayagraj"
+  },
+  "date": {
+    "$numberLong": "1730000001903"
+  }
+},
+{
+  "_id": {
+    "$oid": "69760c35e1da0024a673d304"
+  },
+  "name": "Dr. Anushka Bedi",
+  "email": "oph4@gmail.com",
+  "password": "$2b$10$dummyhashedpassword",
+  "image": "https://randomuser.me/api/portraits/women/66.jpg",
+  "speciality": "Ophthalmologist",
+  "degree": "MBBS, MS (Ophthalmology)",
+  "experience": "7 Years",
+  "about": "Routine eye exam, cataract counselling, infection care.",
+  "fees": 650,
+  "address": {
+    "line1": "Bairhana",
+    "line2": "Prayagraj"
+  },
+  "date": {
+    "$numberLong": "1730000001904"
+  }
+},
+{
+  "_id": {
+    "$oid": "69760c35e1da0024a673d305"
+  },
+  "name": "Dr. Saurabh Kulkarni",
+  "email": "uro1@gmail.com",
+  "password": "$2b$10$dummyhashedpassword",
+  "image": "https://randomuser.me/api/portraits/men/18.jpg",
+  "speciality": "Urologist",
+  "degree": "MBBS, MCh (Urology)",
+  "experience": "11 Years",
+  "about": "Kidney stones, UTI, urinary health consultation.",
+  "fees": 950,
+  "address": {
+    "line1": "Civil Lines",
+    "line2": "Prayagraj"
+  },
+  "date": {
+    "$numberLong": "1730000002001"
+  }
+},
+{
+  "_id": {
+    "$oid": "69760c35e1da0024a673d306"
+  },
+  "name": "Dr. Shweta Joshi",
+  "email": "uro2@gmail.com",
+  "password": "$2b$10$dummyhashedpassword",
+  "image": "https://randomuser.me/api/portraits/women/13.jpg",
+  "speciality": "Urologist",
+  "degree": "MBBS, MS, MCh (Urology)",
+  "experience": "9 Years",
+  "about": "UTI care, bladder issues, urinary disorders.",
+  "fees": 900,
+  "address": {
+    "line1": "Katra",
+    "line2": "Prayagraj"
+  },
+  "date": {
+    "$numberLong": "1730000002002"
+  }
+},
+{
+  "_id": {
+    "$oid": "69760c35e1da0024a673d307"
+  },
+  "name": "Dr. Aditya Chauhan",
+  "email": "uro3@gmail.com",
+  "password": "$2b$10$dummyhashedpassword",
+  "image": "https://randomuser.me/api/portraits/men/61.jpg",
+  "speciality": "Urologist",
+  "degree": "MBBS, MCh (Urology)",
+  "experience": "10 Years",
+  "about": "Kidney stone treatment, prostate health.",
+  "fees": 1000,
+  "address": {
+    "line1": "Naini",
+    "line2": "Prayagraj"
+  },
+  "date": {
+    "$numberLong": "1730000002003"
+  }
+},
+{
+  "_id": {
+    "$oid": "69760c35e1da0024a673d308"
+  },
+  "name": "Dr. Rhea Kapoor",
+  "email": "uro4@gmail.com",
+  "password": "$2b$10$dummyhashedpassword",
+  "image": "https://randomuser.me/api/portraits/women/46.jpg",
+  "speciality": "Urologist",
+  "degree": "MBBS, MCh (Urology)",
+  "experience": "7 Years",
+  "about": "Urinary infections, bladder issues, consultation.",
+  "fees": 850,
+  "address": {
+    "line1": "Bairhana",
+    "line2": "Prayagraj"
+  },
+  "date": {
+    "$numberLong": "1730000002004"
+  }
+},
+{
+  "_id": {
+    "$oid": "69760c35e1da0024a673d309"
+  },
+  "name": "Dr. Harleen Kaur",
+  "email": "dent1@gmail.com",
+  "password": "$2b$10$dummyhashedpassword",
+  "image": "https://randomuser.me/api/portraits/women/21.jpg",
+  "speciality": "Dentist",
+  "degree": "BDS",
+  "experience": "7 Years",
+  "about": "Tooth pain, cleaning, dental checkups.",
+  "fees": 500,
+  "address": {
+    "line1": "Civil Lines",
+    "line2": "Prayagraj"
+  },
+  "date": {
+    "$numberLong": "1730000002101"
+  },
+  "slots_booked": {
+    "2026-05-30": [],
+    "2026-05-28": [
+      "04:30 PM"
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "69760c35e1da0024a673d30a"
+  },
+  "name": "Dr. Vivek Sharma",
+  "email": "dent2@gmail.com",
+  "password": "$2b$10$dummyhashedpassword",
+  "image": "https://randomuser.me/api/portraits/men/28.jpg",
+  "speciality": "Dentist",
+  "degree": "BDS, MDS",
+  "experience": "10 Years",
+  "about": "Root canal, cavities, braces guidance.",
+  "fees": 700,
+  "address": {
+    "line1": "Katra",
+    "line2": "Prayagraj"
+  },
+  "date": {
+    "$numberLong": "1730000002102"
+  }
+},
+{
+  "_id": {
+    "$oid": "69760c35e1da0024a673d30b"
+  },
+  "name": "Dr. Sneha Agarwal",
+  "email": "dent3@gmail.com",
+  "password": "$2b$10$dummyhashedpassword",
+  "image": "https://randomuser.me/api/portraits/women/64.jpg",
+  "speciality": "Dentist",
+  "degree": "BDS",
+  "experience": "6 Years",
+  "about": "Dental hygiene, whitening, gum issues.",
+  "fees": 450,
+  "address": {
+    "line1": "Naini",
+    "line2": "Prayagraj"
+  },
+  "date": {
+    "$numberLong": "1730000002103"
+  },
+  "slots_booked": {
+    "2026-05-29": []
+  }
+},
+{
+  "_id": {
+    "$oid": "69760c35e1da0024a673d30c"
+  },
+  "name": "Dr. Ankit Verma",
+  "email": "dent4@gmail.com",
+  "password": "$2b$10$dummyhashedpassword",
+  "image": "https://randomuser.me/api/portraits/men/74.jpg",
+  "speciality": "Dentist",
+  "degree": "BDS, MDS",
+  "experience": "8 Years",
+  "about": "Tooth extraction, dental pain, cavity care.",
+  "fees": 550,
+  "address": {
+    "line1": "Bairhana",
+    "line2": "Prayagraj"
+  },
+  "date": {
+    "$numberLong": "1730000002104"
+  }
+},
+{
+  "_id": {
+    "$oid": "69760c35e1da0024a673d30d"
+  },
+  "name": "Dr. Rakesh Mishra",
+  "email": "onco1@gmail.com",
+  "password": "$2b$10$dummyhashedpassword",
+  "image": "https://randomuser.me/api/portraits/men/12.jpg",
+  "speciality": "Oncologist",
+  "degree": "MBBS, DM (Oncology)",
+  "experience": "14 Years",
+  "about": "Cancer screening guidance and oncology consultation.",
+  "fees": 1500,
+  "address": {
+    "line1": "Civil Lines",
+    "line2": "Prayagraj"
+  },
+  "date": {
+    "$numberLong": "1730000002201"
+  }
+},
+{
+  "_id": {
+    "$oid": "69760c35e1da0024a673d30e"
+  },
+  "name": "Dr. Ayesha Khan",
+  "email": "onco2@gmail.com",
+  "password": "$2b$10$dummyhashedpassword",
+  "image": "https://randomuser.me/api/portraits/women/7.jpg",
+  "speciality": "Oncologist",
+  "degree": "MBBS, MD (Oncology)",
+  "experience": "11 Years",
+  "about": "Oncology care plans and follow-up consultation.",
+  "fees": 1400,
+  "address": {
+    "line1": "Katra",
+    "line2": "Prayagraj"
+  },
+  "date": {
+    "$numberLong": "1730000002202"
+  }
+},
+{
+  "_id": {
+    "$oid": "69760c35e1da0024a673d30f"
+  },
+  "name": "Dr. Sumeet Arora",
+  "email": "onco3@gmail.com",
+  "password": "$2b$10$dummyhashedpassword",
+  "image": "https://randomuser.me/api/portraits/men/55.jpg",
+  "speciality": "Oncologist",
+  "degree": "MBBS, DM (Oncology)",
+  "experience": "12 Years",
+  "about": "Cancer risk assessment and supportive oncology.",
+  "fees": 1600,
+  "address": {
+    "line1": "Naini",
+    "line2": "Prayagraj"
+  },
+  "date": {
+    "$numberLong": "1730000002203"
+  }
+},
+{
+  "_id": {
+    "$oid": "69760c35e1da0024a673d310"
+  },
+  "name": "Dr. Neelam Joshi",
+  "email": "onco4@gmail.com",
+  "password": "$2b$10$dummyhashedpassword",
+  "image": "https://randomuser.me/api/portraits/women/50.jpg",
+  "speciality": "Oncologist",
+  "degree": "MBBS, MD (Oncology)",
+  "experience": "9 Years",
+  "about": "Cancer consultation, treatment guidance and follow-ups.",
+  "fees": 1300,
+  "address": {
+    "line1": "Bairhana",
+    "line2": "Prayagraj"
+  },
+  "date": {
+    "$numberLong": "1730000002204"
+  }
+},
+{
+  "_id": {
+    "$oid": "69760c35e1da0024a673d311"
+  },
+  "name": "Dr. Prerna Sood",
+  "email": "psy1@gmail.com",
+  "password": "$2b$10$dummyhashedpassword",
+  "image": "https://randomuser.me/api/portraits/women/18.jpg",
+  "speciality": "Psychiatrist",
+  "degree": "MBBS, MD (Psychiatry)",
+  "experience": "9 Years",
+  "about": "Anxiety, depression, stress management consultation.",
+  "fees": 900,
+  "address": {
+    "line1": "Civil Lines",
+    "line2": "Prayagraj"
+  },
+  "date": {
+    "$numberLong": "1730000002301"
+  }
+},
+{
+  "_id": {
+    "$oid": "69760c35e1da0024a673d312"
+  },
+  "name": "Dr. Arnav Kapoor",
+  "email": "psy2@gmail.com",
+  "password": "$2b$10$dummyhashedpassword",
+  "image": "https://randomuser.me/api/portraits/men/36.jpg",
+  "speciality": "Psychiatrist",
+  "degree": "MBBS, MD (Psychiatry)",
+  "experience": "11 Years",
+  "about": "Sleep issues, mood disorders, counselling support.",
+  "fees": 1000,
+  "address": {
+    "line1": "Katra",
+    "line2": "Prayagraj"
+  },
+  "date": {
+    "$numberLong": "1730000002302"
+  }
+},
+{
+  "_id": {
+    "$oid": "69760c35e1da0024a673d313"
+  },
+  "name": "Dr. Tanya Mehra",
+  "email": "psy3@gmail.com",
+  "password": "$2b$10$dummyhashedpassword",
+  "image": "https://randomuser.me/api/portraits/women/41.jpg",
+  "speciality": "Psychiatrist",
+  "degree": "MBBS, DPM",
+  "experience": "8 Years",
+  "about": "Therapy support, anxiety & panic disorder care.",
+  "fees": 850,
+  "address": {
+    "line1": "Naini",
+    "line2": "Prayagraj"
+  },
+  "date": {
+    "$numberLong": "1730000002303"
+  }
+},
+{
+  "_id": {
+    "$oid": "69760c35e1da0024a673d314"
+  },
+  "name": "Dr. Sameer Nanda",
+  "email": "psy4@gmail.com",
+  "password": "$2b$10$dummyhashedpassword",
+  "image": "https://randomuser.me/api/portraits/men/69.jpg",
+  "speciality": "Psychiatrist",
+  "degree": "MBBS, MD (Psychiatry)",
+  "experience": "10 Years",
+  "about": "Stress, depression, behavioural therapy guidance.",
+  "fees": 950,
+  "address": {
+    "line1": "Bairhana",
+    "line2": "Prayagraj"
+  },
+  "date": {
+    "$numberLong": "1730000002304"
+  }
+},
+{
+  "_id": {
+    "$oid": "69fefb7eac3b155b55e85a5b"
+  },
+  "name": "koko",
+  "email": "kuchnhi@gmail.com",
+  "password": "$2b$10$IuYyvBinfJdlP0mAtu4UX.Dt8JuAv.myHYJBJ8wHBkwKrPaE7xbK2",
+  "image": "https://res.cloudinary.com/ddngz4wbh/image/upload/v1778318204/vpfnjkhqrpqr4de8av9d.png",
+  "speciality": "Psychatrist",
+  "degree": "nursery",
+  "experience": "4 Year",
+  "about": "hjgjhg",
+  "available": true,
+  "fees": 520,
+  "address": {
+    "line1": "ghar",
+    "line2": "ghar"
+  },
+  "date": {
+    "$date": "2026-05-09T09:16:46.162Z"
+  },
+  "slots_booked": {
+    "2026-05-28": [
+      "03:00 PM"
+    ]
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69ff4f67aa8d99a7e233fed3"
+  },
+  "name": "koko",
+  "email": "kuchbhinhi@gmail.com",
+  "password": "$2b$10$aFegMieDSVUttVef5klcxei8K7x7FvsNhM6Fu/ql6Z.lwxoe4oL8G",
+  "image": "https://res.cloudinary.com/ddngz4wbh/image/upload/v1778339686/zyhwtzowc5f5kcstbx76.png",
+  "speciality": "Gynecologist",
+  "degree": "nursery",
+  "experience": "7 Year",
+  "about": "hjgjh",
+  "available": true,
+  "fees": 520,
+  "address": {
+    "line1": "ghar",
+    "line2": "ghar"
+  },
+  "date": {
+    "$date": "2026-05-09T15:14:47.527Z"
+  },
+  "slots_booked": {
+    "2026-05-12": [
+      "09:00 AM"
+    ],
+    "2026-05-14": []
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a00c95f517419798d9b2415"
+  },
+  "name": "koko",
+  "email": "kuchbnhi@gmail.com",
+  "password": "$2b$10$02xTsH0VYwKXrGjV7orCHO2M1MwSfBMyUfqoJaE6U6I8zTAGfM9Tq",
+  "image": "https://res.cloudinary.com/ddngz4wbh/image/upload/v1778436446/fyidz3nyt3t4euophnra.png",
+  "speciality": "Dermatologist",
+  "degree": "nursery",
+  "experience": "8 Year",
+  "about": "wdwed",
+  "available": true,
+  "fees": 520,
+  "address": {
+    "line1": "ghar",
+    "line2": "ghar"
+  },
+  "date": {
+    "$date": "2026-05-10T18:07:27.513Z"
+  },
+  "slots_booked": {
+    "2026-05-28": [
+      "03:30 PM"
+    ]
+  },
+  "__v": 0
+}]
