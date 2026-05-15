@@ -171,9 +171,18 @@ navigate("/");
 
     const result = await signInWithPopup(auth, provider);
 
-    localStorage.setItem("token", result.user.accessToken);
+    const { data } = await axios.post(
+  `${import.meta.env.VITE_BACKEND_URL}/api/user/google-login`,
+  {
+    name: result.user.displayName,
+    email: result.user.email,
+    image: result.user.photoURL,
+  }
+);
 
-    setToken(result.user.accessToken);
+localStorage.setItem("token", data.token);
+
+setToken(data.token);
 
     setUserData({
       name: result.user.displayName,

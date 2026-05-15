@@ -40,6 +40,7 @@ const registerUser = async (req, res) => {
     const userData = {
       name,
       email,
+      phone,
       password: hashedPassword,
     };
 //a
@@ -151,9 +152,20 @@ if (
 
 }
     
-    await userModel.findByIdAndUpdate(userId, { name, phone, gender,age });
     
-    let imageURL = userData.image;
+
+
+
+const userData = await userModel.findById(userId);
+
+let imageURL = userData.image;
+
+await userModel.findByIdAndUpdate(userId, {
+  name,
+  phone,
+  gender,
+  age,
+});
 
 if (imageFile) {
 
@@ -185,6 +197,45 @@ await userModel.findByIdAndUpdate(
   } catch (error) {
     console.log(error);
     return res.json({ success: false, message: error.message });
+  }
+};
+
+const googleLogin = async (req, res) => {
+  try {
+
+    const { name, email, image } = req.body;
+
+    let user = await userModel.findOne({ email });
+
+    if (!user) {
+
+      user = await userModel.create({
+        name,
+        email,
+        image,
+        password: "google-auth-user",
+      });
+
+    }
+
+    const token = jwt.sign(
+      { id: user._id },
+      process.env.JWT_SECRET,
+      { expiresIn: "30d" }
+    );
+
+    res.json({
+      success: true,
+      token,
+    });
+
+  } catch (error) {
+
+    res.json({
+      success: false,
+      message: error.message,
+    });
+
   }
 };
 
@@ -593,4 +644,5 @@ export {
   predictDepartment,
   createEmergencyAppointment,
   completeAppointment,
+  googleLogin,
 };

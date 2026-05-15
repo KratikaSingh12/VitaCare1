@@ -202,7 +202,7 @@ export default function HomePage() {
                   String(d.speciality).toLowerCase() ===
                   String(specialty.name).toLowerCase()
               ).length;
-              console.log(doctors[0])
+              // console.log(doctors[0])
 
               return (
                 <SpecialtyCard
