@@ -474,7 +474,7 @@ const predictDepartment = async (req, res) => {
     const { symptom } = req.body;
 
     const response = await axios.post(
-      "https://your-python-service-name.onrender.com/predict",
+      "https://vitacare1-1.onrender.com/predict",
       {
         symptom
       }
