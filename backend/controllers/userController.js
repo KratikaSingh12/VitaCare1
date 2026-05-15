@@ -474,7 +474,7 @@ const predictDepartment = async (req, res) => {
     const { symptom } = req.body;
 
     const response = await axios.post(
-      "http://127.0.0.1:8000/predict",
+      "https://your-python-service-name.onrender.com/predict",
       {
         symptom
       }
