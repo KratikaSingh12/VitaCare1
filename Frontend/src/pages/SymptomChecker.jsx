@@ -478,9 +478,9 @@ export default function SymptomChecker() {
 
                                   <Star className="h-4 w-4 text-yellow-500" />
 
-                                  <span>
+                                  {/* <span>
                                     4.5
-                                  </span>
+                                  </span> */}
 
                                 </div>
 
