@@ -139,11 +139,16 @@ export default function SymptomChecker() {
         }
 
         // LOW CONFIDENCE
-        else {
-
-          setMatchedSpecialties([]);
-
-        }
+        // LOW CONFIDENCE
+else {
+  setMatchedSpecialties([
+    {
+      specialtyName: `Possible match: ${result.department}`,
+      suggestedDepartment: result.department,
+      confidence: result.confidence,
+    },
+  ]);
+}
 
         setHasSearched(true);
 
